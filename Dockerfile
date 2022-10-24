@@ -6,4 +6,4 @@ RUN apk update && apk upgrade && \
 RUN git clone https://github.com/peacekeeper6/RAYJ.git /app
 RUN ./mvnw package
 CMD ["java", "-jar", "target/spring-0.0.1-SNAPSHOT.jar"]
-EXPOSE 8080
+EXPOSE 8069
