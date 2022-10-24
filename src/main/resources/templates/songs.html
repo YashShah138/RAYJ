@@ -127,9 +127,9 @@
             console.log(data);
             // Likes or Jeers updated/incremented
             if (type === LIKE) // like data element
-              document.getElementById(elemID).innerHTML = data.like;  // fetched like data assigned to like Document Object Model (DOM)
+              document.getElementById(elemID).innerHTML = data.likes;  // fetched like data assigned to like Document Object Model (DOM)
             else if (type === DISLIKE) // jeer data element
-              document.getElementById(elemID).innerHTML = data.dislike;  // fetched dislike data assigned to dislike Document Object Model (DOM)
+              document.getElementById(elemID).innerHTML = data.dislikes;  // fetched dislike data assigned to dislike Document Object Model (DOM)
             else
               error("unknown type: " + type);  // should never occur
         })
