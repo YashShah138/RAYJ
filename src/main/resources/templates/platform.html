@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layouts/base}" lang="en">
+
+<head>
+    <title>Intro</title>
+</head>
+
+<body>
+<th:block layout:fragment="body" th:remove="tag">
+    <!-- Start of body content specific to page -->
+    <div class="px-5 py-5 mx-auto">
+        <h1><strong>Top Music Platforms</strong></h1>
+        <div class="row">
+            <div class="col-4">
+                <div class="card">
+                    <img class="card-img-top" th:src="@{/images/anti-hero.jpg}" alt="Java Development" height="250">
+                    <div class="card-body">
+                    <h5 class="card-title">Spotify</h5>
+                    <p class="card-text">
+                        <ol>
+                            <li>Spotify is a Swedish audio streaming platform and was founded on founded on April 23, 2006 by its creators, Daniel Ek and Martin Lorentzon. As of 2022, Spotify has 433 million active users monthly, listening to the millions of songs and podcasts on its database. </li>
+                        </ol>
+                    </p>
+                    <a href="https://www.youtube.com/watch?v=b1kbLwvqugk" class="btn btn-primary">Click to View Music Video</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card">
+                    <img class="card-img-top" th:src="@{/images/bad-habits.jpg}" alt="Spring Development" height="250">
+                    <div class="card-body">
+                    <h5 class="card-title">Top song from BillBoard.</h5>
+                    <p class="card-text">
+                        <ol>
+                            <li>The number #1 song on Billboard's charts is, "Bad Habit," by Steve Lacy, spending 15 weeks on the BillBoard Top 100 charts. The song was released as a part of Lacy's 2022 album, "Gemini Rights."" </li>
+                        </ol>
+                    </p>
+                    <a href="https://www.youtube.com/watch?v=VF-FGf_ZZiI" class="btn btn-primary">Click to View Music Video</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="card">
+                    <img class="card-img-top" th:src="@{/images/as-it-was.jpeg}" alt="Java Persistence" height="250">
+                    <div class="card-body">
+                    <h5 class="card-title">This week's #1 Hit on Apple Music</h5>
+                    <p class="card-text">
+                        <ol>
+                            <li>The top hit on the Apple Music charts is, "As it Was," by Harry Styles. The song has spent 28 weeks on the BillBoard top 100 chart, and is at the top of charts on Spotify, Apple Music, and Youtube.</li>
+                        </ol>
+                    </p>
+                    <a href="https://www.youtube.com/watch?v=H5v3kku4y6Q" class="btn btn-primary">Click to View Music Video</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <!-- End of body content specific to page -->
+</th:block>
+</body>
+
+</html>
