@@ -3,152 +3,26 @@
 <!-- Signals to the Layout Dialect which layout should be used to decorate this View -->
 <html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
       layout:decorate="~{layouts/base}" lang="en">
+<link href="https://fonts.googleapis.com/css2?family=Joan&display=swap" rel="stylesheet">
 
-<head>
-    <title>Intro</title>
-</head>
-
-<body>
-    <table>
-        <thead>
-        <tr>
-          <th>Song Name</th>
-          <th>Artist</th>
-          <th>Image Link</th>
-          <th>Award</th>
-        </tr>
-        </thead>
-        <tbody id="result">
-          <!-- generated rows -->
-        </tbody>
-      </table>
-      
-      <!-- Script is layed out in a sequence (no function) and will execute when page is loaded -->
-      <script>
-        // prepare HTML result container for new output
-        const resultContainer = document.getElementById("result");
-      
-        // prepare fetch options
-        const url = "https://billboard3.p.rapidapi.com/hot-100?date=2022-07-07&range=1-10";
-      
-        const options = {
-          method: 'GET',
-          headers: {
-              'X-RapidAPI-Key': '9e4650470emshc2461cc01c07b29p18b9b5jsnfa759ab87fca',
-              'X-RapidAPI-Host': 'billboard3.p.rapidapi.com'
-          }
-        };
-      
-        // fetch the API
-        fetch(url, options)
-          // response is a RESTful "promise" on any successful fetch
-          .then(response => {
-            // check for response errors
-            if (response.status !== 200) {
-                const errorMsg = 'Database response error: ' + response.status;
-                console.log(errorMsg);
-                const tr = document.createElement("tr");
-                const td = document.createElement("td");
-                td.innerHTML = errorMsg;
-                tr.appendChild(td);
-                resultContainer.appendChild(tr);
-                return;
-            }
-            // valid response will have json data
-            response.json().then(data => {
-                console.log(data);
-      
-                // Country data
-                for (const row of data) {
-                  console.log(row);
-      
-                  // tr for each row
-                  const tr = document.createElement("tr");
-                  // td for each column
-                  const title = document.createElement("td");
-                  const artist = document.createElement("td");
-                  const image = document.createElement("td");
-                  const award = document.createElement("td");
-      
-                  // data is specific to the API
-                  title.innerHTML = row.title;
-                  artist.innerHTML = row.artist; 
-                  image.innerHTML = row.image; 
-                  award.innerHTML = row.award; 
-      
-                  // this build td's into tr
-                  tr.appendChild(title);
-                  tr.appendChild(artist);
-                  tr.appendChild(image);
-                  tr.appendChild(award);
-      
-                  // add HTML to container
-                  resultContainer.appendChild(tr);
-                }
-            })
-        })
-        // catch fetch errors (ie ACCESS to server blocked)
-        .catch(err => {
-          console.error(err);
-          const tr = document.createElement("tr");
-          const td = document.createElement("td");
-          td.innerHTML = err;
-          tr.appendChild(td);
-          resultContainer.appendChild(tr);
-        });
-      </script>
-<th:block layout:fragment="body" th:remove="tag">
+<style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', serif;
+        /* background: linear-gradient(to bottom right, #E3F0FF, #FAFCFF); */
+        justify-content: center;
+        align-items: center;
+        background:linear-gradient(#0e071b, #230a4d);
+    }
+</style>
+<body style="background:white">
+<th:block style="height:100%;" layout:fragment="body" th:remove="tag">
     <!-- Start of body content specific to page -->
-    <div class="px-5 py-5 mx-auto">
-        <h1><strong>Top Music: Global</strong></h1>
-        <div class="row">
-            <div class="col-4">
-                <div class="card">
-                    <img class="card-img-top" th:src="@{/images/anti-hero.jpg}" alt="Java Development" height="250">
-                    <div class="card-body">
-                    <h5 class="card-title">#1 Song of the Week</h5>
-                    <p class="card-text">
-                        <ol>
-                            <li>The top song of the week is, "Anti-Hero," by Taylor Swift, released under Swift's 2022 album Midnights. As of October 23, 2022, the song's music video has gained over 26 million views and is trending at #1 on YouTube Music. </li>
-                        </ol>
-                    </p>
-                    <a href="https://www.youtube.com/watch?v=b1kbLwvqugk" class="btn btn-primary">Click to View Music Video</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="card">
-                    <img class="card-img-top" th:src="@{/images/bad-habits.jpg}" alt="Spring Development" height="250">
-                    <div class="card-body">
-                    <h5 class="card-title">Top song from BillBoard.</h5>
-                    <p class="card-text">
-                        <ol>
-                            <li>The number #1 song on Billboard's charts is, "Bad Habit," by Steve Lacy, spending 15 weeks on the BillBoard Top 100 charts. The song was released as a part of Lacy's 2022 album, "Gemini Rights." </li>
-                        </ol>
-                    </p>
-                    <a href="https://www.youtube.com/watch?v=VF-FGf_ZZiI" class="btn btn-primary">Click to View Music Video</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-4">
-                <div class="card">
-                    <img class="card-img-top" th:src="@{/images/as-it-was.jpeg}" alt="Java Persistence" height="250">
-                    <div class="card-body">
-                    <h5 class="card-title">This week's #1 Hit on Apple Music</h5>
-                    <p class="card-text">
-                        <ol>
-                            <li>The top hit on the Apple Music charts is, "As it Was," by Harry Styles. The song has spent 28 weeks on the BillBoard top 100 chart, and is at the top of charts on Spotify, Apple Music, and Youtube.</li>
-                        </ol>
-                    </p>
-                    <a href="https://www.youtube.com/watch?v=H5v3kku4y6Q" class="btn btn-primary">Click to View Music Video</a>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
+<h1>Welcome to RAYJ Music: A different way to explore music recommendations</h3>
+<h3><strong>This machine is solely to run our backend databases, so we didn't bother styling it. Feel free to navigate to https://peacekeeper6.github.io/RAYJ-final/ for our frontend website.</strong></h3>
     </div>
     <!-- End of body content specific to page -->
 </th:block>
 </body>
-
 </html>
