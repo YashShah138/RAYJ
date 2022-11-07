@@ -36,4 +36,16 @@ public class Database {
 
     }
 
+    @GetMapping("/artists")
+    // @RequestParam handles variables binding to frontend, defaults, etc
+    public String artists(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+
+        // model attributes are visible to Thymeleaf when HTML is "pre-processed"
+        model.addAttribute("name", name);
+
+        // load HTML VIEW (artists.html)
+        return "artists"; 
+
+    }
+
 }
