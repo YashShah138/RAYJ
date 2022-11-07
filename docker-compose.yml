@@ -1,10 +1,10 @@
 version: '3'
 services:
   web:
-    image: java_springv1
+    image: t8032_rayjv1
     build: .
     ports:
-      - "8080:8080"
+      - "8032:8032"
     volumes:
       - persistent_volume:/app/volumes
 volumes:
@@ -13,4 +13,4 @@ volumes:
     driver_opts:
       o: bind
       type: none
-      device: /home/ubuntu/T9_RAYJ/volumes
+      device: /home/ubuntu/T8032_RAYJ/volumes
