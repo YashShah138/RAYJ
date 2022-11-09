@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller  // HTTP requests are handled as a controller, using the @Controller annotation
 public class Database {
-
+/*
     // @GetMapping handles GET request for /greet, maps it to greeting() method
     @GetMapping("/users")
     // @RequestParam handles variables binding to frontend, defaults, etc
@@ -23,6 +23,7 @@ public class Database {
         return "users"; 
 
     }
+*/
 
     @GetMapping("/songs")
     // @RequestParam handles variables binding to frontend, defaults, etc
