@@ -43,10 +43,15 @@ public class Calculator {
 
     // Print the expression, terms, and result
     public String toString() {
-        return ("Original expression: " + this.expression + "\n" +
+        return ("Original Expression: " + this.expression + "\n" +
                 "Tokenized expression: " + this.tokens.toString() + "\n" +
                 "Reverse Polish Notation: " +this.reverse_polish.toString() + "\n" +
                 "Final result: " + String.format("%.2f", this.result));
+    }
+    public String toJSON() {
+        return "{ \"expression\": \"" + this.expression + "\", \"tokenized\": \""
+        + this.tokens.toString() + "\", \"reversepolish\": \"" + this.reverse_polish.toString()
+        + "\", \"result\": " + this.result + " }";
     }
 
     // Helper definition to define operators, lookup in MAP are fast and easy O(1) versus ArrayList O(n)
