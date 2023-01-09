@@ -14,7 +14,7 @@ public class CalculatorApiController {
     public ResponseEntity<String> calculate(@RequestBody final String expression) {
         try {
             Calculator calculatedExpression = new Calculator(expression);
-            return new ResponseEntity<>(calculatedExpression.toString(), HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(calculatedExpression.toJSON(), HttpStatus.ACCEPTED);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
