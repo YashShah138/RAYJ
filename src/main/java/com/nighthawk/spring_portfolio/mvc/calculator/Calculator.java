@@ -7,6 +7,9 @@ import java.util.Stack;
 
 import java.lang.Math;
 
+import org.json.simple.JSONObject;
+import org.json.simple.JSONArray;
+
 public class Calculator {
     // Key instance variables
     private final String expression;
@@ -48,10 +51,16 @@ public class Calculator {
                 "Reverse Polish Notation: " +this.reverse_polish.toString() + "\n" +
                 "Final result: " + String.format("%.2f", this.result));
     }
-    public String toJSON() {
-        return "{ \"expression\": \"" + this.expression + "\", \"tokenized\": \""
-        + this.tokens.toString() + "\", \"reversepolish\": \"" + this.reverse_polish.toString()
-        + "\", \"result\": " + this.result + " }";
+    public JSONObject toJSON() {
+        JSONObject json = new JSONObject();
+        json.put("expression", this.expression);
+        json.put("tokenized", this.tokens.toString());
+        json.put("reversepolish", this.reverse_polish.toString());
+        json.put("result", this.result);
+        return json;
+        // return "{\"expression\": \"" + this.expression + "\", \"tokenized\": \""
+        // + this.tokens.toString() + "\", \"reversepolish\": \"" + this.reverse_polish.toString()
+        // + "\", \"result\": " + this.result + "}";
     }
 
     // Helper definition to define operators, lookup in MAP are fast and easy O(1) versus ArrayList O(n)
