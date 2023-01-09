@@ -51,16 +51,19 @@ public class Calculator {
                 "Reverse Polish Notation: " +this.reverse_polish.toString() + "\n" +
                 "Final result: " + String.format("%.2f", this.result));
     }
-    public JSONObject toJSON() {
+    public String toJSON() {
+        return "{" + "\"results\": " + this.result + "}";
+        // return "{\"expression\": \"" + this.expression + "\", \"tokenized\": \""
+        // + this.tokens.toString() + "\", \"reversepolish\": \"" + this.reverse_polish.toString()
+        // + "\", \"result\": " + this.result + "}";
+    }
+    public JSONObject toJSONObj() {
         JSONObject json = new JSONObject();
         json.put("expression", this.expression);
         json.put("tokenized", this.tokens.toString());
         json.put("reversepolish", this.reverse_polish.toString());
         json.put("result", this.result);
         return json;
-        // return "{\"expression\": \"" + this.expression + "\", \"tokenized\": \""
-        // + this.tokens.toString() + "\", \"reversepolish\": \"" + this.reverse_polish.toString()
-        // + "\", \"result\": " + this.result + "}";
     }
 
     // Helper definition to define operators, lookup in MAP are fast and easy O(1) versus ArrayList O(n)
