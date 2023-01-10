@@ -105,8 +105,12 @@ public class Person {
         return -1;
     }
 
+    public Long getId() {
+        return this.id;
+    }
+
     public String toString() {
-        return ( "{ \"name\": "  +this.name+  ", " + "\"email\": "  +this.email+  ", " + "\"password\": "  +this.password+  ", " + "\"dateOfBirth\": "  +this.dob+  ", " + "\"age\": "  +this.getAge()+ ", " + "\"height\": "  +this.height+ ", " + "\"weight\": "  +this.weight+ ", " + "\"stepgoal\": "  +this.goalStep+ " }" );
+        return ( "{ \"id\": "  +this.id+  ", " + "\"name\": "  +this.name+  ", " + "\"email\": "  +this.email+  ", " + "\"password\": "  +this.password+  ", " + "\"dateOfBirth\": "  +this.dob+  ", " + "\"age\": "  +this.getAge()+ ", " + "\"height\": "  +this.height+ ", " + "\"weight\": "  +this.weight+ ", " + "\"stepgoal\": "  +this.goalStep+ " }" );
     }
 
     public static void main(String[] args) {

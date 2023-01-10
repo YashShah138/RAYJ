@@ -59,6 +59,21 @@ public class PersonApiController {
     }
 
     /*
+    DELETE individual Person using Email
+     */
+    @DeleteMapping("/del/{email}")
+    public ResponseEntity<Person> delPerson(@PathVariable String email) {
+        try {
+            Person found = repository.findByEmail(email);
+            repository.deleteById(found.getId());  // value from findByID
+            return new ResponseEntity<>(found, HttpStatus.OK);  // OK HTTP response: status code, headers, and body
+        } catch(Exception e) {
+            // Bad Email
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST); 
+        }
+    }
+
+    /*
     POST Aa record by Requesting Parameters from URI
      */
     @PostMapping( "/post")
