@@ -73,9 +73,10 @@ public class Light {
     public String toString() {
         return( "{" + 
             "\"red\": " + red + "," +
-            "\"green\": " +  green + "," + 
+            "\"green\": " +  green + "," +
             "\"blue\": " + blue + "," +
-            "\"effect\": " + "\"" + EFFECT.get(effect) + "\"" +
+            "\"effect\": " + "\"" + EFFECT.get(effect) + "\"" + "," +
+            "\"on\": " + on +
             "}" );
     }
 
