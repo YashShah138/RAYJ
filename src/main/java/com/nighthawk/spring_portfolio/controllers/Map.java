@@ -1,4 +1,4 @@
-package com.nighthawk.spring_portfolio.mvc.map;
+package com.nighthawk.spring_portfolio.controllers;
 /* MVC code that shows defining a simple Model, calling View, and this file serving as Controller
  * Web Content with Spring MVCSpring Example: https://spring.io/guides/gs/serving-web-con
  */
@@ -14,7 +14,7 @@ public class Map {
     // @GetMapping handles GET request for /greet, maps it to greeting() method
     @GetMapping("/map")
     // @RequestParam handles variables binding to frontend, defaults, etc
-    public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+    public String map(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
 
         // model attributes are visible to Thymeleaf when HTML is "pre-processed"
         model.addAttribute("name", name);
