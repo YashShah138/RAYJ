@@ -8,7 +8,7 @@ Navigate the links above to start exploring!
 
 ![FUN](https://trekbaron.com/wp-content/uploads/2020/08/types-of-roller-coasters-Aug262020-1-min.jpg)
 
-> Fun, exciting places to get your game on, your adrenaline rushing, and play.
+> Exciting places to get your game on, your adrenaline rushing, and play.
 
 ---------
 # Popular US Travel Destinations
@@ -22,7 +22,7 @@ Navigate the links above to start exploring!
 > Come visit the largest theme park in the United States for a day filled with magic at the Walt Disney World Resort! Being near the size of San Francisco crossing over 40 square miles, it is comprised of four major theme parks with many family-friendly attractions, dining, shows, shopping, including water parks and golf!
 
 ---------
-# Un-Popular US Travel Destinations
+# Underrated US Travel Destinations
 
 ![BELMONT](https://www.belmontpark.com/wp-content/uploads/2020/07/BelmontPark-aerial_midway_north_edit-scaled.jpg)
 ## Belmont Park; San Diego, CA
