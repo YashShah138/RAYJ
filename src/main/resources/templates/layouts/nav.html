@@ -1,96 +1,124 @@
 <!DOCTYPE html>
-<!-- Bootstrap Navigation Code -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Joan&display=swap" rel="stylesheet">
+
+<!-- Begin navigation fragments -->
 <th:block xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" th:fragment="header">
-    <style>
-        nav{
-            display: flex;
-            padding: 5% 2%;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .nav-links{
-            flex: 1;
-            text-align: left;
-        }
-        .nav-links ul li{
-            list-style: none;
-            display: inline-block;
-            padding: 8px 12px;
-            position: relative;
-        }
-        .nav-links ul li a{
-            color: #fff;
-            text-decoration: none;
-            font-family: 'Poppins', serif;
-            font-size: 26px;
-        }
-        .nav-links ul li::after{
-            content: '';
-            width: 0;
-            padding: 0;
-            height: 0;
-            border: 1px solid #333333;
-            background: white;
-            display: block;
-            transition: 0.3s;
-        }
-        .nav-links ul li:hover::after{
-            border: 1px solid white;
-            width: 100%;
-        }
-        #nav ul {
-            display: inline-block;
-            list-style-type: none;
-        }
-        .d-inline-block {
-            margin-bottom: 7px
-        }
-    </style>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <img alt="" class="d-inline-block align-center"
-                     src="/static/images/catremovebg.png"
-                     th:src="@{/static/images/catremovebg.png}"
-                     href="@{https://music.nighthawkcoders.tk}"
-                     th:href="@{https://music.nighthawkcoders.tk}"
-                     height="50"
-                     margin-right="2px"
-                     width="auto">
-                <a class="navbar-brand" style="padding-left: 8px; font-family: 'Poppins', serif;display:none" th:href="@{https://music.nighthawkcoders.tk}">RAYJ Music</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
+        <div class="container-fluid">
+            <div class="btn-group">
+                <img alt="" class="d-inline-block align-center"
+                        src=""
+                        th:src="@{/images/music-logo.png}"
+                        height="50"
+                        width="auto">
+                <a class="navbar-brand" th:href="@{https://music.nighthawkcoders.tk/}">RAYJ Music</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-        <a href="index.html"></a>
-        <div class="nav-links" style="margin-top: 8px">
-          <ul class="box">
-            <li><a href="/" style="margin-bottom: 12px">HOME</a></li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" style="color:white" href="#" id="navbarDarkDropdownMenuLink0" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    DATABASE
-                </a>
-                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink0">
-                    <li><a class="dropdown-item" th:href="@{/users}">USERS</a></li>
-                    <li><a class="dropdown-item" th:href="@{/songs}">SONGS</a></li>
-                </ul>
-            </li>
-          </ul>
-        </div>
-        <div class="px-3 form-group" style="height:30px;margin-bottom:7px">
-            <input id="search" class="form-control" type="search" placeholder="Search Billboard" aria-label="Search">
-        </div>
-    </nav>
+
+                <div class="collapse navbar-collapse" id="navbarHome">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" th:href="@{/}">Home<span class="sr-only"></span></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="collapse navbar-collapse" id="navbarHome">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" th:href="@{/signin}">Sign-In<span class="sr-only"></span></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="collapse navbar-collapse" id="navbarPlatform">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" th:href="@{/quiz}">Music Quiz<span class="sr-only"></span></a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="collapse navbar-collapse" id="navbarNavDarkDropdown0">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink0" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Starters
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink0">
+                                <li><a class="dropdown-item" th:href="@{/greetYash}">Yash Greeting</a></li>
+                                <li><a class="dropdown-item" th:href="@{/greet}">Greet</a></li>
+                                <li><a class="dropdown-item" th:href="@{/dne}">404 Error</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="collapse navbar-collapse" id="navbarNavDarkDropdown0">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink0" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Database
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink0">
+                                <li><a class="dropdown-item" th:href="@{/users}">Users</a></li>
+                                <li><a class="dropdown-item" th:href="@{/songs}">Songs</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+
+            <div class="btn-group">
+                <!-- Search Box -->
+                <div class="px-3" style="height:30px;">
+                    <input id="search" type="search" placeholder="Search" aria-label="Search">
+                </div>
                 <!-- Clock display -->
-                <!--                <div class="px-3 text-dark">-->
-                <!--                    <span id="clock"></span>-->
-                <!--                </div>-->
+                <div class="px-3 text-dark">
+                    <span id="clock"></span>
+                </div>
+
                 <!-- Login/Logout -->
-                
+                <!--
+                <th:block sec:authorize="isAnonymous()">
+                    <div class="px-3">
+                        <a th:href='@{/login}' class="link-dark">Login</a>
+                    </div>
+                </th:block>
+                <th:block sec:authorize="isAuthenticated()">
+                    <div class="dropdown px-3">
+                        <span sec:authentication="name" class="dropdown-toggle link-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        </span>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li>
+                                <div class="dropdown-item">
+                                    <p style="margin-bottom:2px"><strong>ROLES:</strong></p>
+                                    <p style="font-size:0.75em;margin:1px" sec:authorize="hasRole('ADMIN')">ADMIN</p>
+                                    <p style="font-size:0.75em;margin:1px" sec:authorize="hasRole('TEACHER')">TEACHER</p>
+                                    <p style="font-size:0.75em;margin:1px" sec:authorize="hasRole('STUDENT')">STUDENT</p>
+                                </div>
+                            </li>
+                            <li><a class="dropdown-item active" th:href='@{/logout}'>Logout</a></li>
+                        </ul>
+                    </div>
+                </th:block>
+                -->
+
+
+                <!-- Dark mode action -->
+                <div class="form-check form-switch">
+                    <label class="custom-control-label" for="darkSwitch"></label>
+                    <input type="checkbox" onclick="darkFunction()" class="form-check-input link-dark" id="darkSwitch">
+                </div>
+            </div>
+
+            <!-- Navigation bar JavaScript support -->
             <script>
                 const search = document.getElementById('search');
                 const google = 'https://www.google.com/search?q=site%3A+';
-                const site = 'Billboard';
+                const site = 'https://nighthawkcodingsociety.com';
 
                 function submitted(event) {
                     if (event.key === 'Enter') {
@@ -157,6 +185,8 @@
                         : localStorage.removeItem("darkSwitch");
                 }
                 // End Dark Mode Control
+
             </script>
         </div>
+    </nav>
 </th:block>

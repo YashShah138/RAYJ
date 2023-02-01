@@ -43,7 +43,7 @@ Navigate the links above to start exploring!
 
 ![Rock formations](https://blog.vriresorts.com/hubfs/Blog%20Images/Sedona%20Arizona.jpg)
 ## Sedona, Arizona
-> Sedona is regularly described as one of America's most beautiful places. The towering red rocks and jagged sandstone buttes matched against an almost always blue sky have beckoned to professional and budding artists for years. But there's more to Sedona than red rocks and good looks. Over the past few decades, spiritualists have flocked to the region to take advantage of the numerous New Age "vortexes" with supposed spirit-balancing powers found here. Spas offer traditional treatments with a local twist – such as red clay wraps and blue corn body scrubs – followed by a glass of local wine are great ways to relax after a long day spent on the trails. Exploring the wilderness via a guided Jeep tour is another popular option.
+> Sedona is regularly described as one of America's most beautiful places. The towering red rocks and jagged sandstone buttes matched against an almost always blue sky have beckoned to professional and budding artists for years. But there's more to Sedona than red rocks and good looks. Over the past few decades, spiritualists have flocked to the region to take advantage of the numerous New Age "vortexes" with supposed spirit-balancing powers found here. Spas offer traditional treatments with a local twist – such as red clay wraps and blue corn body scrubs – followed by a glass of local wine are great ways to relax after a long day spent on the trails. 
 
 <!-- https://travel.usnews.com/Sedona_AZ/ -->
 
