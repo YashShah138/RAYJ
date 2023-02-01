@@ -12,6 +12,49 @@
         }
         .navbar{
             color: black;
+           
+            nav{
+            display: flex;
+            padding: 5% 2%;
+            justify-content: space-between;
+            align-items: center;
+               
+               .nav-links{
+            flex: 1;
+            text-align: left;
+        }
+        .nav-links ul li{
+            list-style: none;
+            display: inline-block;
+            padding: 8px 12px;
+            position: relative;
+        }
+        .nav-links ul li a{
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Poppins', serif;
+            font-size: 26px;
+        }
+        .nav-links ul li::after{
+            content: '';
+            width: 0;
+            padding: 0;
+            height: 0;
+            border: 1px solid #333333;
+            background: white;
+            display: block;
+            transition: 0.3s;
+        }
+        .nav-links ul li:hover::after{
+            border: 1px solid white;
+            width: 100%;
+        }
+        #nav ul {
+            display: inline-block;
+            list-style-type: none;
+        }
+        .d-inline-block {
+            margin-bottom: 7px
         }
     </style>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top navbar-expand-lg p-md-1 border border-success border-4 rounded-pill">
