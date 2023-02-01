@@ -4,159 +4,317 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Joan&display=swap" rel="stylesheet">
 <th:block xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" th:fragment="header">
+   <div class="navborder">
+    <meta charset="UTF-8" />
     <style>
-        nav{
-            display: flex;
-            padding: 5% 2%;
-            justify-content: space-between;
-            align-items: center;
+        .banner-image {
+            background-size: cover;
         }
-        .nav-links{
-            flex: 1;
-            text-align: left;
-        }
-        .nav-links ul li{
-            list-style: none;
-            display: inline-block;
-            padding: 8px 12px;
-            position: relative;
-        }
-        .nav-links ul li a{
-            color: #fff;
-            text-decoration: none;
-            font-family: 'Poppins', serif;
-            font-size: 26px;
-        }
-        .nav-links ul li::after{
-            content: '';
-            width: 0;
-            padding: 0;
-            height: 0;
-            border: 1px solid #333333;
-            background: white;
-            display: block;
-            transition: 0.3s;
-        }
-        .nav-links ul li:hover::after{
-            border: 1px solid white;
-            width: 100%;
-        }
-        #nav ul {
-            display: inline-block;
-            list-style-type: none;
-        }
-        .d-inline-block {
-            margin-bottom: 7px
+        .navbar{
+            color: black;
         }
     </style>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <img alt="" class="d-inline-block align-center"
-                     src="/static/images/catremovebg.png"
-                     th:src="@{/static/images/catremovebg.png}"
-                     href="@{https://music.nighthawkcoders.tk}"
-                     th:href="@{https://music.nighthawkcoders.tk}"
-                     height="50"
-                     margin-right="2px"
-                     width="auto">
-                <a class="navbar-brand" style="padding-left: 8px; font-family: 'Poppins', serif;display:none" th:href="@{https://music.nighthawkcoders.tk}">RAYJ Music</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-        <a href="index.html"></a>
-        <div class="nav-links" style="margin-top: 8px">
-          <ul class="box">
-            <li><a href="/" style="margin-bottom: 12px">HOME</a></li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" style="color:white" href="#" id="navbarDarkDropdownMenuLink0" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    DATABASE
-                </a>
-                <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink0">
-                    <li><a class="dropdown-item" th:href="@{/users}">USERS</a></li>
-                    <li><a class="dropdown-item" th:href="@{/songs}">SONGS</a></li>
-                </ul>
-            </li>
-          </ul>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top navbar-expand-lg p-md-1 border border-success border-4 rounded-pill">
+
+    <img src="/static/assets/general/bassoonlogo.png" width="55" style="padding-right: 7px; padding-left: 7px; cursor: pointer" class="align-center" alt="" title="Home" onclick="location.href='/'">
+
+    <a class="navbar-brand" href="/" style="font-family: Helvetica" title="Home">{{basename}}</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Shops
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/store/teaShop">Tea Shop</a>
+                        <a class="dropdown-item" href="/store/TeeeShop">Teee Shop</a>
+                        <a class="dropdown-item"  href="/store/Cart">Cart</a>
+                    </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Our Team
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/everitt/about">Everitt</a>
+                        <a class="dropdown-item" href="/daniel/home">Daniel</a>
+                        <a class="dropdown-item" href="/jun">Jun</a>
+                        <a class="dropdown-item" href="/lucas/home">Lucas</a>
+                        <a class="dropdown-item" href="/rithwikh/home">Ŕithwikh</a>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/mainframe/search">Search</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Create Tasks
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/daniel/createtask">Daniel and Everitt's Create Task</a>
+                        <a class="dropdown-item" href="/store/lucasCreateTask">Lucas's Create Task </a>
+                        <a class="dropdown-item" href="/store/jun_createtask">Jun's Create Task</a>
+                        <a class="dropdown-item" href="/rithwikh/createtask">Ŕithwikh's Create Task</a>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/store/snake">Snake</a>
+                </li>
+
+                <button onclick="DarkToggle()" class="button-22" role="button">Toggle Light Mode</button>
+
+                <script>
+                    function DarkToggle() {
+                        var element = document.body;
+                        element.classList.toggle("dark-mode");
+                    }
+                </script>
+
+
         </div>
-        <div class="px-3 form-group" style="height:30px;margin-bottom:7px">
-            <input id="search" class="form-control" type="search" placeholder="Search Billboard" aria-label="Search">
+    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <div class="float-right">
+            <input type="text" class="form-control" id="term" placeholder="Enter search term">
         </div>
+        <div class="float-right me-3">
+            <button class="btn btn-primary ms-2" id="navsearch" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSearch" onclick="search_data();">Search</button>
+            <!-- <button class="btn btn-primary" onclick="location.href='https://github.com/NinjaBreadLord/super-duper-bassoons'"> Github </button> -->
+        </div>
+    </div>
+        <div id="google_translate_element"></div>
+
+        <script type="text/javascript">
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement(
+                    {pageLanguage: 'en'},
+                    'google_translate_element'
+                );
+            }
+        </script>
+
+        <script type="text/javascript" src=
+                "https://translate.google.com/translate_a/element.js?
+cb=googleTranslateElementInit">
+        </script>
+
     </nav>
-                <!-- Clock display -->
-                <!--                <div class="px-3 text-dark">-->
-                <!--                    <span id="clock"></span>-->
-                <!--                </div>-->
-                <!-- Login/Logout -->
-                
-            <script>
-                const search = document.getElementById('search');
-                const google = 'https://www.google.com/search?q=site%3A+';
-                const site = 'Billboard';
+</div>
 
-                function submitted(event) {
-                    if (event.key === 'Enter') {
-                        // calculations to determine new window size at 66% of existing
-                        const reduction = 0.66;  // reduce by 66%
-                        const w = Math.trunc(window.innerWidth*reduction);
-                        const h = Math.trunc(window.outerHeight*reduction);
-                        const l = Math.trunc(window.top.screenX + ((window.innerWidth - w)/2));
-                        const t = Math.trunc(window.top.screenY + ((window.outerHeight - h)/2));
-                        const left = "left=" + l;
-                        const top = "top=" + t;
-                        const width = "width=" + w;
-                        const height = "height=" + h;
-                        const location = left + ", " + top + ", " + width + ", " + height
+<div class="offcanvas offcanvas-end bg-dark text-white" tabindex="-1" id="offcanvasSearch" aria-labelledby="offcanvasEndLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasEndLabel">Search Results</h5>
+    <button type="button" class="btn-close btn-close-white text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body small">
+    <div class="container">
+        <div class="row mb-3">
+            <a class="btn btn-primary" onclick="filter_tag();"> Website Only </a>
+        </div>
+        <div class="row" id="result">
+        </div>
+    </div>
+  </div>
+</div>
 
-                        // setup and display window
-                        event.preventDefault();
-                        const url = google
-                            + site
-                            + '+'
-                            + search.value;
-                        const win = window.open(url, "CompSci A Search", location);
-                        win.focus();
+
+
+<script>
+    var SearchGlobal= {};
+
+    var inputnav = document.getElementById("term");
+
+    inputnav.addEventListener("keyup", function(event) {
+    
+        if (event.keyCode === 13) {
+        event.preventDefault();
+        document.getElementById("navsearch").click();
+        }
+    });
+
+
+    function search_data() {
+        // fetch standard requires data set to a name-value pair
+        const term = document.getElementById("term");
+        const body = {
+            term: term.value
+        };
+        SearchGlobal.body = body
+
+    
+        // fetch call with header options
+        fetch('/mainframe/search/term/', {
+            method: "POST",
+            credentials: "include",
+            body: JSON.stringify(body),
+            cache: "no-cache",
+            headers: new Headers({
+                "content-type": "application/json"
+            })
+        })
+            // async then replies with response header
+            .then(function (response) {
+                // prepare HTML search result container for new output
+                const resultContainer = document.getElementById("result");
+                // clean up from previous search
+                while (resultContainer.firstChild) {
+                    resultContainer.removeChild(resultContainer.firstChild);
+                }
+                // trap error response from Web API
+                if (response.status !== 200) {
+                    const errorMsg = 'Uh oh, looks like the database failed! Error: ' + response.status;
+                    console.log(errorMsg);
+                    const div = document.createElement("div");
+                    div.innerHTML = errorMsg;
+                    resultContainer.appendChild(div);
+                    const imgdiv = document.createElement("img");
+                    imgdiv.src = "/static/assets/mainframe/man-crying.png";
+                    resultContainer.appendChild(imgdiv)
+                    return;
+                }
+                // response contains valid result
+                response.json().then(function(data) {
+                    // loop through JSON and build HTML output
+                    // create header div for the search results
+                    const divheader = document.createElement("div");
+                    divheader.className = "row mb-1";
+                    //create headers for name and description rows
+                    const namerowheader = document.createElement("div");
+                    namerowheader.className = "col p-1";
+                    const descheader = document.createElement("div");
+                    descheader.className = "col p-1";
+                    // create divider
+                    const divider = document.createElement("hr");
+
+                    // naming the header divs
+                    namerowheader.innerHTML = "Webpage";
+                    descheader.innerHTML = "Description";
+
+                    // Appending divs to the result container
+                    resultContainer.appendChild(divheader);
+                    divheader.appendChild(namerowheader);
+                    divheader.appendChild(descheader);
+                    resultContainer.appendChild(divider)
+
+                    for (let i = 0; i < data.length; i++) {
+                        // create divs for search result 
+                        const div = document.createElement("div");
+                        div.className = "row mb-1";
+                        // create name div
+                        const namediv = document.createElement("div");
+                        namediv.className = "col p-1";
+                        // create description div
+                        const descdiv = document.createElement("div");
+                        descdiv.className = "col p-1";
+                        descdiv.innerHTML = data[i].description;
+                        // Create element a with page name with link
+                        const a = document.createElement("a");
+                        a.href = data[i].url;
+                        a.innerHTML = data[i].name;
+
+                        // Append divs to result container
+                        resultContainer.appendChild(div);
+                        div.appendChild(namediv);
+                        div.appendChild(descdiv);
+                        namediv.appendChild(a);
+                    }
+                })
+            })
+    }
+
+    function filter_tag() {
+
+        const body = SearchGlobal.body;
+
+        fetch('/mainframe/search/term/', {
+            method: "POST",
+            credentials: "include",
+            body: JSON.stringify(body),
+            cache: "no-cache",
+            headers: new Headers({
+                "content-type": "application/json"
+            })
+        })
+            // async then replies with response header
+            .then(function (response) {
+                // prepare HTML search result container for new output
+                const resultContainer = document.getElementById("result");
+                // clean up from previous search
+                while (resultContainer.firstChild) {
+                    resultContainer.removeChild(resultContainer.firstChild);
+                }
+                // trap error response from Web API
+                if (response.status !== 200) {
+                    const errorMsg = 'Uh oh, looks like the database failed! Error: ' + response.status;
+                    console.log(errorMsg);
+                    const div = document.createElement("div");
+                    div.innerHTML = errorMsg;
+                    resultContainer.appendChild(div);
+                    const imgdiv = document.createElement("img");
+                    imgdiv.src = "/static/assets/mainframe/man-crying.png";
+                    resultContainer.appendChild(imgdiv)
+                    return;
+                }
+                // response contains valid result
+                response.json().then(function(data) {
+
+                // loop through JSON and build HTML output
+                    // create header div for the search results
+                    const divheader = document.createElement("div");
+                    divheader.className = "row mb-1";
+                    //create headers for name and description rows
+                    const namerowheader = document.createElement("div");
+                    namerowheader.className = "col p-1";
+                    const descheader = document.createElement("div");
+                    descheader.className = "col p-1";
+                    // create divider
+                    const divider = document.createElement("hr");
+
+                    // naming the header divs
+                    namerowheader.innerHTML = "Webpage";
+                    descheader.innerHTML = "Description";
+
+                    // Appending divs to the result container
+                    resultContainer.appendChild(divheader);
+                    divheader.appendChild(namerowheader);
+                    divheader.appendChild(descheader);
+                    resultContainer.appendChild(divider)
+
+                for (let i = 0; i < data.length; i++) {
+
+                    // create divs for search result
+                    console.log(data[i].usertag);
+
+                    if (data[i].usertag == "Main") {
+                        const div = document.createElement("div");
+                        div.className = "row mb-1";
+                        // create name div
+                        const namediv = document.createElement("div");
+                        namediv.className = "col p-1";
+                        // create description div
+                        const descdiv = document.createElement("div");
+                        descdiv.className = "col p-1";
+                        descdiv.innerHTML = data[i].description;
+                        // Create element a with page name with link
+                        const a = document.createElement("a");
+                        a.href = data[i].url;
+                        a.innerHTML = data[i].name;
+
+                        // Append divs to result container
+                        resultContainer.appendChild(div);
+                        div.appendChild(namediv);
+                        div.appendChild(descdiv);
+                        namediv.appendChild(a);
                     }
                 }
-                search.addEventListener('keypress', submitted);
+            })
+        })
+    }
 
-                // Clock Control
-                // clockElement global element set for convenience
-                let clockElement = document.getElementById('clock');
-                // Execute clock function on load
-                clock();
-                // Clock update executes on each interval set by timer
-                function clock() {
-                    let date = new Date();
-                    clockElement.textContent = date.toLocaleString();
-                }
-                // Clock refresh timer, a reoccurring event
-                setInterval(clock, 1000);
-                // End Clock Control
-
-                // Dark Mode Control
-                // darkSwitch global element is set for convenience
-                const darkSwitch=document.getElementById("darkSwitch");
-                // establishes the initial state of darkSwitch on page load
-                if(darkSwitch) {
-                    // obtains the value of darkSwitch from localStorage
-                    const darkSwitchSelected =
-                        localStorage.getItem("darkSwitch") !== null &&
-                        localStorage.getItem("darkSwitch") === "dark";
-                    // sets the value of darkSwitch.checked to the global darkSwitch
-                    darkSwitch.checked=darkSwitchSelected;
-                    // if dark-mode, toggle the switch to dark-mode position
-                    if (darkSwitchSelected)
-                        document.body.classList.toggle("dark-mode");
-                }
-                // executes on each "dark mode" UI toggle
-                function darkFunction() {
-                    // toggles between off (standard CSS) and dark-mode (.dark-mode CSS)
-                    document.body.classList.toggle("dark-mode");
-                    // localStorage is used to manage darkSwitch status
-                    darkSwitch.checked
-                        ? localStorage.setItem("darkSwitch","dark")
-                        : localStorage.removeItem("darkSwitch");
-                }
-                // End Dark Mode Control
-            </script>
-        </div>
-</th:block>
+</script>
