@@ -14,7 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController // annotation to create a RESTful web services
-@RequestMapping("/api/hotels")  //prefix of API
+@RequestMapping("/hotels")  //prefix of API
 public class HotelsApiController {
     private JSONObject body; //last run result
     private HttpStatus status; //last run status
