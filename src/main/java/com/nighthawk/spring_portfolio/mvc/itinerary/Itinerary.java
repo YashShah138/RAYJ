@@ -1,0 +1,38 @@
+package com.nighthawk.spring_portfolio.mvc.itinerary;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+
+@Data  // Annotations to simplify writing code (ie constructors, setters)
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity // Annotation to simplify creating an entity, which is a lightweight persistence domain object. Typically, an entity represents a table in a relational database, and each entity instance corresponds to a row in that table.
+public class Itinerary {
+    @Column(unique=true)
+    private String itineraryName;
+
+    private String description;
+    
+    private String packing;
+    
+    private String travel;
+
+    private String food;
+
+    private String hotel;
+
+    private String activities;
+
+    private String importantNotes;
+    // @Id
+    // @GeneratedValue(strategy = GenerationType.AUTO)
+    // private Long id;
+
+    // @Column(unique=true)
+    // private String username;
+
+    // private String password;
+}
