@@ -1,8 +1,8 @@
 {% include guides.html %}
 
-Guides to everything you might want out of your next vacation -- Popular or Un-popular!
+Not sure where you want to go? Start planning with our vacation guides that provide a range of both popular locations and hidden gems for relaxation, excitement, or deep cultural immersion.
 
-> Navigate the links above to start exploring!
+> Check out the links below to start exploring!
 
 <body>
 
