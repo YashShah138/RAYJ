@@ -3,6 +3,9 @@ package com.nighthawk.spring_portfolio.mvc.itinerary;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import com.nighthawk.spring_portfolio.mvc.itinerary.Itinerary;
+import com.nighthawk.spring_portfolio.mvc.itinerary.ItineraryJpaRepository;
+
 
 // import static org.junit.Assert.fail;
 
@@ -15,8 +18,8 @@ import javax.persistence.*;
 public class Itinerary {
     @Id
     @Column(unique=true, nullable=false)
-    private String itineraryName;
-
+    private String name;
+    
     @Column(nullable=false)
     private String description;
 
@@ -36,5 +39,36 @@ public class Itinerary {
     private String activities;
 
     @Column(nullable=false)
-    private String importantNotes;
+    private String notes;
+
+    public String toString() {
+        return ("{ \"Itinerary Name\": " + this.name + ", " + "\"Description\": " + this.description + ", " + "\"Packing\": " + this.packing
+                + ", " + "\"Travel\": " + this.travel + ", " + "\"Food\": " + this.food + ", " + " \"Hotel\": "
+                + this.hotel + "\"Activities\": " + this.activities + " \"Important Notes\" " + this.notes + "}");
+    }
+
+    public Itinerary (String name, String description, String packing, String travel, String food, String hotel, String activities, String notes) {
+        // not working because constructor is overloaded
+        this.name = name;
+        this.description = description;
+        this.packing = packing;
+        this.travel = travel;
+        this.food = food;
+        this.hotel = hotel;
+        this.activities = activities;
+        this.notes = notes;
+    }
+    
+    public static void main(String[] args) {
+        Itinerary FirstItinerary = new Itinerary();
+        FirstItinerary.setName("My First Itinerary");
+        FirstItinerary.setDescription("Trip to Hawaii");
+        FirstItinerary.setPacking("Clothes, toiletries, swimgear");
+        FirstItinerary.setTravel("Airplane");
+        FirstItinerary.setFood("Local restaurants");
+        FirstItinerary.setHotel("Trivago");
+        FirstItinerary.setActivities("Snorkeling, hiking, cultural festival");
+        FirstItinerary.setNotes("Don't forget allergy medication");
+        System.out.println(FirstItinerary.toString());
+    }
 }
