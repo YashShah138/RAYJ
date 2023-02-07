@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface ItineraryJpaRepository extends JpaRepository<Itinerary, Long> {
     // JPA has many built in methods, these few have been prototyped for this application
     void save(String Joke);
-    List<Itinerary> findAllByOrderByItineraryNameAsc();
+    List<Itinerary> findAllByOrderByItineraryIdAsc();
     // List<Itinerary> findByItineraryIgnoreCase(String name);
 }

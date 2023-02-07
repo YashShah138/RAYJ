@@ -17,6 +17,10 @@ import javax.persistence.*;
 @Entity // Annotation to simplify creating an entity, which is a lightweight persistence domain object. Typically, an entity represents a table in a relational database, and each entity instance corresponds to a row in that table.
 public class Itinerary {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(unique=true, nullable=false)
+    private Long id;
+
     @Column(unique=true, nullable=false)
     private String name;
     
@@ -42,13 +46,14 @@ public class Itinerary {
     private String notes;
 
     public String toString() {
-        return ("{ \"Itinerary Name\": " + this.name + ", " + "\"Description\": " + this.description + ", " + "\"Packing\": " + this.packing
+        return ("{ \"ID\": " + this.id + "\"Itinerary Name\": " + this.name + ", " + "\"Description\": " + this.description + ", " + "\"Packing\": " + this.packing
                 + ", " + "\"Travel\": " + this.travel + ", " + "\"Food\": " + this.food + ", " + " \"Hotel\": "
                 + this.hotel + "\"Activities\": " + this.activities + " \"Important Notes\" " + this.notes + "}");
     }
 
-    public Itinerary (String name, String description, String packing, String travel, String food, String hotel, String activities, String notes) {
+    public Itinerary (Long id, String name, String description, String packing, String travel, String food, String hotel, String activities, String notes) {
         // not working because constructor is overloaded
+        this.id = id;
         this.name = name;
         this.description = description;
         this.packing = packing;
@@ -61,6 +66,7 @@ public class Itinerary {
     
     public static void main(String[] args) {
         Itinerary FirstItinerary = new Itinerary();
+        FirstItinerary.setId(112342412L);
         FirstItinerary.setName("My First Itinerary");
         FirstItinerary.setDescription("Trip to Hawaii");
         FirstItinerary.setPacking("Clothes, toiletries, swimgear");

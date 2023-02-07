@@ -38,22 +38,30 @@ public class ItineraryApiController {
     // }
     
     //create
-    @PostMapping(value = "/newItinerary", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Object> newUser(@RequestBody final Map<String, Object> map) {
+    @GetMapping("/newitinerary")
+    public ResponseEntity<List<Itinerary>> createItineraryInfo(Long id, String name, String description, String packing, String travel, String food, String hotel, String activities, String notes) {
+    Itinerary newItinerary = new Itinerary(id, name, description, packing, travel, food, hotel, activities, notes);
+    repository.save(newItinerary);
+    return new ResponseEntity<>(repository.findAllByOrderByItineraryIdAsc(id), HttpStatus.OK);
+    }
 
-        // Create 
-        String name = (String) map.get("name");
-        String description = (String) map.get("description");
-        String packing = (String) map.get("packing");
-        String travel = (String) map.get("travel");
-        String food = (String) map.get("food");
-        String hotel = (String) map.get("hotel");
-        String activities = (String) map.get("activities");
-        String notes = (String) map.get("notes");
-        }
+
+    // @PostMapping(value = "/newItinerary", produces = MediaType.APPLICATION_JSON_VALUE)
+    // public ResponseEntity<Object> newItinerary(@RequestBody final Map<String, Object> map) {
+
+    //     // Create 
+    //     String name = (String) map.get("name");
+    //     String description = (String) map.get("description");
+    //     String packing = (String) map.get("packing");
+    //     String travel = (String) map.get("travel");
+    //     String food = (String) map.get("food");
+    //     String hotel = (String) map.get("hotel");
+    //     String activities = (String) map.get("activities");
+    //     String notes = (String) map.get("notes");
+    //     }
 
     //TODO implement update
 
     //delete
-    
+
 }
