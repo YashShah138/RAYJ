@@ -19,6 +19,8 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.security.web.header.writers.StaticHeadersWriter;
 import org.springframework.http.HttpMethod;
 
 /*
@@ -64,19 +66,39 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		httpSecurity
 		        // We don't need CSRF for this example
                 .csrf().disable()
-				// don't authenticate this particular request
+			// list the requests/endpoints need to be authenticated
 				.authorizeRequests()
 				.antMatchers("/").permitAll()
-				.antMatchers("/login").permitAll()
-				.antMatchers(HttpMethod.POST, "/authenticate").permitAll()
-				.antMatchers(HttpMethod.POST, "/api/person/post/**").permitAll()
-                .antMatchers(HttpMethod.DELETE, "/api/person/delete/**").hasAnyAuthority("ROLE_ADMIN")
-				// all other requests need to be authenticated
-				.anyRequest().authenticated().and().
-				// make sure we use stateless session; session won't be used to
-				// store user's state.
-				exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
-				.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+				// .antMatchers("/login").permitAll()
+				.antMatchers("/authenticate").permitAll()
+				.antMatchers("/api/person/**").authenticated()
+				// .antMatchers("/mvc/person/update/**", "/mvc/person/delete/**").authenticated()
+				// .antMatchers("/**").authenticated()
+				.and()
+			// support cors
+			.cors().and()
+			.headers()
+				.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Credentials", "true"))
+				.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-ExposedHeaders", "*", "Authorization", "Set-Cookie"))
+				.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Headers", "Content-Type", "Authorization", "x-csrf-token", "Set-Cookie"))
+				.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-MaxAge", "600"))
+				.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Methods", "POST", "GET", "OPTIONS", "HEAD", "DELETE"))
+				//.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Origin", "https://nighthawkcoders.github.io", "http://localhost:4000"))
+				.and()
+			.formLogin()
+                .loginPage("/login")
+                .and()
+            .logout()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/")
+				.and()
+			// make sure we use stateless session; 
+			// session won't be used to store user's state.
+			.exceptionHandling()
+				.authenticationEntryPoint(jwtAuthenticationEntryPoint)
+				.and()
+				.sessionManagement()
+				.sessionCreationPolicy(SessionCreationPolicy.STATELESS)   ;
 
 		// Add a filter to validate the tokens with every request
 		httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
