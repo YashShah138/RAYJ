@@ -1,22 +1,22 @@
-package com.nighthawk.spring_portfolio.mvc.itinerary;
+package com.nighthawk.spring_portfolio.mvc.budget;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.nighthawk.spring_portfolio.mvc.itinerary.Itinerary;
-import com.nighthawk.spring_portfolio.mvc.itinerary.ItineraryJpaRepository;
+import com.nighthawk.spring_portfolio.mvc.budget.Budget;
+import com.nighthawk.spring_portfolio.mvc.budget.BudgetJpaRepository;
 
 
 import java.util.*;
 
 @RestController // annotation to simplify the creation of RESTful web services
-@RequestMapping("/itinerary")
-public class ItineraryApiController {
+@RequestMapping("/budget")
+public class BudgetApiController {
 
     // Autowired enables Control to connect HTML and POJO Object to database easily for CRUD operations
     @Autowired
-    private ItineraryJpaRepository repository;
+    private BudgetJpaRepository repository;
 
     // @Autowired
     // private ItineraryJpaRepository
@@ -25,7 +25,7 @@ public class ItineraryApiController {
     GET List of Jokes
      */
     @GetMapping("/")
-    public ResponseEntity<List<Itinerary>> getItinerary() {
+    public ResponseEntity<List<Budget>> getBudget() {
         return new ResponseEntity<>( repository.findAll(), HttpStatus.OK);
     }
 
@@ -38,11 +38,11 @@ public class ItineraryApiController {
     // }
     
     //create
-    @GetMapping("/newitinerary")
-    public ResponseEntity<List<Itinerary>> createItineraryInfo(Long id, String name, String description, String packing, String travel, String food, String hotel, String activities, String notes) {
-    Itinerary newItinerary = new Itinerary(id, name, description, packing, travel, food, hotel, activities, notes);
-    repository.save(newItinerary);
-    return new ResponseEntity<>(repository.findAllByOrderByItineraryIdAsc(id), HttpStatus.OK);
+    @GetMapping("/newbudget")
+    public ResponseEntity<List<Budget>> createBudgetInfo(Integer trip, String name, Integer airport, Integer rental, Integer transport, Integer hotel1, Integer hotel2) {
+    Budget newBudget = new Budget(trip, name, airport, rental, transport, hotel1, hotel2);
+    repository.save(newBudget);
+    return new ResponseEntity<>(repository.findAllByOrderByBudgetIdAsc(trip), HttpStatus.OK);
     }
 
 
