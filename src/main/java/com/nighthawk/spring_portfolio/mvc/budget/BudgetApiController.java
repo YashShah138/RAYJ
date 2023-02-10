@@ -13,7 +13,6 @@ import java.util.*;
 @RestController // annotation to simplify the creation of RESTful web services
 @RequestMapping("/api/budget")
 public class BudgetApiController {
-
     // Autowired enables Control to connect HTML and POJO Object to database easily for CRUD operations
     @Autowired
     private BudgetJpaRepository repository;
@@ -32,23 +31,23 @@ public class BudgetApiController {
     // /*
     // GET List of itineraries
     //  */
-    @GetMapping("/{id}")
-    public ResponseEntity<Budget> getBudget(@PathVariable int id) {
-        Optional<Budget> optional = repository.findById();
-        if (optional.isPresent()) {  // Good ID
-            Budget budget = optional.get();  // value from findByID
-            return new ResponseEntity<>(budget, HttpStatus.OK);  // OK HTTP response: status code, headers, and body
-        }
+    // @GetMapping("/{id}")
+    //public ResponseEntity<Budget> getBudget(@PathVariable int id) {
+    //    Optional<Budget> optional = repository.findAllByOrderByIdAsc();
+    //    if (optional.isPresent()) {  // Good ID
+    //        Budget budget = optional.get();  // value from findByID
+    //        return new ResponseEntity<>(budget, HttpStatus.OK);  // OK HTTP response: status code, headers, and body
+    //    }
         // Bad ID
-        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);       
-    }
+    //    return new ResponseEntity<>(HttpStatus.BAD_REQUEST);       
+    // } 
     
     //create
     @GetMapping("/newbudget")
     public ResponseEntity<List<Budget>> createBudgetInfo(Integer trip, String name, Integer airport, Integer rental, Integer transport, Integer hotel1, Integer hotel2) {
     Budget newBudget = new Budget(trip, name, airport, rental, transport, hotel1, hotel2);
     repository.save(newBudget);
-    return new ResponseEntity<>(repository.findById(), HttpStatus.OK);
+    return new ResponseEntity<>(repository.findAllByOrderByBudgetIdAsc(), HttpStatus.OK);
     }
 
 
