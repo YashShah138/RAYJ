@@ -52,7 +52,6 @@ public class Itinerary {
     }
 
     public Itinerary (Long id, String name, String description, String packing, String travel, String food, String hotel, String activities, String notes) {
-        // not working because constructor is overloaded
         this.id = id;
         this.name = name;
         this.description = description;

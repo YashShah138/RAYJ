@@ -44,6 +44,12 @@ public class ItineraryApiController {
     repository.save(newItinerary);
     return new ResponseEntity<>(repository.findAllByOrderByItineraryIdAsc(), HttpStatus.OK);
     }
+    @GetMapping("/newitinerary")
+    public ResponseEntity<List<Itinerary>> createItineraryInfo(Long id, String name, String description, String packing, String travel, String food, String hotel, String activities, String notes) {
+    Itinerary newItinerary = new Itinerary(id, name, description, packing, travel, food, hotel, activities, notes);
+    repository.save(newItinerary);
+    return new ResponseEntity<>(repository.findAllByOrderByItineraryIdAsc(id), HttpStatus.OK);
+    }
 
 
     // @PostMapping(value = "/newItinerary", produces = MediaType.APPLICATION_JSON_VALUE)

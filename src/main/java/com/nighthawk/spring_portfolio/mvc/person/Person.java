@@ -3,6 +3,8 @@ package com.nighthawk.spring_portfolio.mvc.person;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,6 +14,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import static javax.persistence.FetchType.EAGER;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Positive;
@@ -21,6 +25,7 @@ import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.nighthawk.spring_portfolio.mvc.role.Role;
 import com.vladmihalcea.hibernate.type.json.JsonType;
 
 import lombok.AllArgsConstructor;
@@ -81,6 +86,10 @@ public class Person {
         }
     }
     */
+
+    @ManyToMany(fetch = EAGER)
+    private Collection<Role> roles = new ArrayList<>();
+
     @Type(type="json")
     @Column(columnDefinition = "jsonb")
     private Map<String,Map<String, Object>> stats = new HashMap<>(); 
@@ -110,7 +119,7 @@ public class Person {
     }
 
     public String toString() {
-        return ( "{ \"id\": "  +this.id+  ", " + "\"name\": "  +this.name+  ", " + "\"email\": "  +this.email+  ", " + "\"password\": "  +this.password+  ", " + "\"dateOfBirth\": "  +this.dob+  ", " + "\"age\": "  +this.getAge()+ ", " + "\"height\": "  +this.height+ ", " + "\"weight\": "  +this.weight+ ", " + "\"stepgoal\": "  +this.goalStep+ " }" );
+        return ( "{ \"id\": "  +this.id+  ", " + "\"name\": "  +this.name+  ", " + "\"email\": "  +this.email+  ", " + "\"password\": "  +this.password+  ", " + "\"dateOfBirth\": "  +this.dob+  ", " + "\"age\": "  +this.getAge()+ ", " + "\"height\": "  +this.height+ ", " + "\"weight\": "  +this.weight+ ", " + "\"stepgoal\": "  +this.goalStep+ ", " + "\"authorities\": "  +this.roles.toString()+ " }" );
     }
 
     public static void main(String[] args) {

@@ -1,0 +1,57 @@
+<style>
+    .centerb {
+        width: 1200px;
+        height: 700px;
+        padding: 10px;
+        margin: 60px auto;
+    }
+     }
+
+</style>
+
+<meta name="viewport" content="width=device-width, initial-scale=3">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<body style="background-color:#ee850c;">
+    <div class="centerb">
+        <center>
+
+        <div class="center">
+            <h1 class="w3-text-blue" style="text-shadow:1px 1px 0 #444">
+                <b>Budgeting Page</b></h1>
+        </div>
+</p>
+
+            <center><button class="btn btn-primary" style="width: 10%"> Click! </button></center>
+            <div class="center" style="padding-top: 20px; padding-bottom: 20px">
+                <img id="imageSwitch"src="/images" height="500" width="50">
+    
+
+        </center>
+
+    
+
+            <form action="javascript:void(0);" onsubmit="showResults()">
+                <label for="locations"> Location:</label>
+                <select name="locations" id="locations">
+                    <option value="https://free.timeanddate.com/clock/i838ixnf/n4882/tt0">San Diego</option>
+                    <option value="https://free.timeanddate.com/clock/i838j82k/n64/tt0">Chicago</option>
+                    <option value="https://free.timeanddate.com/clock/i838j82k/n179/tt0">New York</option>
+                    <option value="https://free.timeanddate.com/clock/i838j82k/n136/tt0">London</option>
+                    <input type="submit" value="Submit">
+                </select>
+            </form>
+      
+
+    </div>
+
+</body>
+
+
+<script>
+    /* This function displays the time of the location selected. */
+    function showResults() {
+        let location = document.getElementById("locations").value;
+        document.getElementById("time").innerHTML = '<object type = "text/html" data = "' + location + '"></object>';
+    }
+</script>
