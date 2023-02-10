@@ -13,7 +13,7 @@ import javax.persistence.*;
 
 @Data  // Annotations to simplify writing code (ie constructors, setters)
 @NoArgsConstructor
-@AllArgsConstructor
+// @AllArgsConstructor
 @Entity // Annotation to simplify creating an entity, which is a lightweight persistence domain object. Typically, an entity represents a table in a relational database, and each entity instance corresponds to a row in that table.
 public class Budget {
     @Id
@@ -39,14 +39,7 @@ public class Budget {
     @Column(nullable=false)
     private Integer hotel2;
 
-    public String toString() {
-        return ("{ \"Trip\": " + this.trip + "\"Trip Name\": " + this.name + ", " + "\"Airport\": " + this.airport + ", " + "\"Rental Car\": " + this.rental
-                + ", " + "\"Other Transport\": " + this.transport + ", " + "\"1st Hotel\": " + this.hotel1 + ", " + " \"2nd Hotel\": "
-                + this.hotel2 + "\"3rd Hotel\": " + "}");
-    }
-
     public Budget (Integer trip, String name, Integer airport, Integer rental, Integer transport, Integer hotel1, Integer hotel2) {
-
         this.trip = trip;
         this.name = name;
         this.airport = airport;
@@ -54,6 +47,16 @@ public class Budget {
         this.transport = transport;
         this.hotel1 = hotel1;
         this.hotel2 = hotel2;
+    }
+
+    public Integer getId() {
+        return this.trip;
+    }
+
+    public String toString() {
+        return ("{ \"Trip\": " + this.trip + "\"Trip Name\": " + this.name + ", " + "\"Airport\": " + this.airport + ", " + "\"Rental Car\": " + this.rental
+                + ", " + "\"Other Transport\": " + this.transport + ", " + "\"1st Hotel\": " + this.hotel1 + ", " + " \"2nd Hotel\": "
+                + this.hotel2 + "\"3rd Hotel\": " + "}");
     }
     
     public static void main(String[] args) {
