@@ -34,7 +34,7 @@ public class BudgetApiController {
     //  */
     @GetMapping("/{id}")
     public ResponseEntity<Budget> getBudget(@PathVariable int id) {
-        Optional<Budget> optional = repository.findById(id);
+        Optional<Budget> optional = repository.findAllByOrderByBudgetIdAsc();
         if (optional.isPresent()) {  // Good ID
             Budget budget = optional.get();  // value from findByID
             return new ResponseEntity<>(budget, HttpStatus.OK);  // OK HTTP response: status code, headers, and body
@@ -42,12 +42,13 @@ public class BudgetApiController {
         // Bad ID
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);       
     }
+    
     //create
     @GetMapping("/newbudget")
     public ResponseEntity<List<Budget>> createBudgetInfo(Integer trip, String name, Integer airport, Integer rental, Integer transport, Integer hotel1, Integer hotel2) {
     Budget newBudget = new Budget(trip, name, airport, rental, transport, hotel1, hotel2);
     repository.save(newBudget);
-    return new ResponseEntity<>(repository.findById(trip), HttpStatus.OK);
+    return new ResponseEntity<>(repository.findAllByOrderByBudgetIdAsc(), HttpStatus.OK);
     }
 
 
