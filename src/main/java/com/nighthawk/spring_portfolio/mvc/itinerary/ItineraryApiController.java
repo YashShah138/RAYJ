@@ -39,7 +39,7 @@ public class ItineraryApiController {
     
     //create
    
-    @GetMapping("/newitinerary")
+    @GetMapping("/new")
     public ResponseEntity<List<Itinerary>> createItineraryInfo(Long id, String name, String description, String packing, String travel, String food, String hotel, String activities, String notes) {
     Itinerary newItinerary = new Itinerary(id, name, description, packing, travel, food, hotel, activities, notes);
     repository.save(newItinerary);
