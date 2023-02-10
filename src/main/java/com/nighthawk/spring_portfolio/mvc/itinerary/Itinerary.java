@@ -48,7 +48,7 @@ public class Itinerary {
     public String toString() {
         return ("{ \"ID\": " + this.id + "\"Itinerary Name\": " + this.name + ", " + "\"Description\": " + this.description + ", " + "\"Packing\": " + this.packing
                 + ", " + "\"Travel\": " + this.travel + ", " + "\"Food\": " + this.food + ", " + " \"Hotel\": "
-                + this.hotel + "\"Activities\": " + this.activities + " \"Important Notes\" " + this.notes + "}");
+                + this.hotel + ", " + "\"Activities\": " + this.activities + " \"Important Notes\": " + this.notes + "}");
     }
 
     public Itinerary (Long id, String name, String description, String packing, String travel, String food, String hotel, String activities, String notes) {
