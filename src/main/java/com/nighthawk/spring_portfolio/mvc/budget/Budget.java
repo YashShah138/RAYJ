@@ -58,6 +58,10 @@ public class Budget {
                 + ", " + "\"Other Transport\": " + this.transport + ", " + "\"1st Hotel\": " + this.hotel1 + ", " + " \"2nd Hotel\": "
                 + this.hotel2 + "\"3rd Hotel\": " + "}");
     }
+
+    public Integer total() {
+        return this.airport + this.transport + this.hotel1 + this.hotel2;
+    }
     
     public static void main(String[] args) {
         Budget Budget1 = new Budget();
@@ -69,5 +73,6 @@ public class Budget {
         Budget1.setHotel1(400);
         Budget1.setHotel2(200);
         System.out.println(Budget1.toString());
+        System.out.println(Budget1.total());
     }
 }
