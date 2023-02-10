@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface BudgetJpaRepository extends JpaRepository<Budget, Integer> {
     // JPA has many built in methods, these few have been prototyped for this application
     void save(String Budget);
-    List<Budget> findAllByOrderByNameAsc();
+    List<Budget> findById(Integer id);
 
 
 }

@@ -47,7 +47,7 @@ public class BudgetApiController {
     public ResponseEntity<List<Budget>> createBudgetInfo(Integer trip, String name, Integer airport, Integer rental, Integer transport, Integer hotel1, Integer hotel2) {
     Budget newBudget = new Budget(trip, name, airport, rental, transport, hotel1, hotel2);
     repository.save(newBudget);
-    return new ResponseEntity<>(repository.findAllByOrderByNameAsc(trip), HttpStatus.OK);
+    return new ResponseEntity<>(repository.findById(trip), HttpStatus.OK);
     }
 
 
