@@ -41,11 +41,11 @@ public class ItineraryApiController {
     
     //create
    
-    @GetMapping("/new/{id}")
-    public ResponseEntity<List<Itinerary>> createItinerary(Long id, String name, String description, String packing, String travel, String food, String hotel, String activities, String notes) {
-    Itinerary newItinerary = new Itinerary(id, name, description, packing, travel, food, hotel, activities, notes);
+    @GetMapping("/new/{itineraryId}/{name}/{description}/{packing}/{travel}/{food}/{hotel}/{activities}/{notes}")
+    public ResponseEntity<List<Itinerary>> createItinerary(@PathVariable Long itineraryId, @PathVariable String name, @PathVariable String description, @PathVariable String packing, @PathVariable String travel, @PathVariable String food, @PathVariable String hotel, @PathVariable String activities, @PathVariable String notes) {
+    Itinerary newItinerary = new Itinerary(itineraryId, name, description, packing, travel, food, hotel, activities, notes);
     repository.save(newItinerary);
-    return new ResponseEntity<>(repository.findAllByOrderByItineraryIdAsc(), HttpStatus.OK);
+    return new ResponseEntity<>(repository.findByItineraryId(itineraryId), HttpStatus.OK);
     }
 
 
@@ -66,11 +66,11 @@ public class ItineraryApiController {
     //TODO implement update
 
     //delete
-    @GetMapping("/delete/{id}")
-    public ResponseEntity<List<Itinerary>> deleteItinerary(Long id, String name, String description, String packing, String travel, String food, String hotel, String activities, String notes) {
-    Itinerary selectedItinerary = repository.findById(id).get();
+    @GetMapping("/delete/{itineraryId}")
+    public ResponseEntity<List<Itinerary>> deleteItinerary(@PathVariable Long itineraryId) {
+    Itinerary selectedItinerary = repository.findById(itineraryId).get();
     repository.delete(selectedItinerary);
-    return new ResponseEntity<>(repository.findAllByOrderByItineraryIdAsc(), HttpStatus.OK);
+    return new ResponseEntity<>(repository.findByItineraryId(itineraryId), HttpStatus.OK);
     }
 
 }

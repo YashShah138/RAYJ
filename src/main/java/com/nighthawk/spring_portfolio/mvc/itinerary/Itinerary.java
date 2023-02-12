@@ -19,7 +19,7 @@ public class Itinerary {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(unique=true, nullable=false)
-    private Long id;
+    private Long itineraryId;
 
     @Column(unique=true, nullable=false)
     private String name;
@@ -46,13 +46,13 @@ public class Itinerary {
     private String notes;
 
     public String toString() {
-        return ("{ \"ID\": " + this.id + "\"Itinerary Name\": " + this.name + ", " + "\"Description\": " + this.description + ", " + "\"Packing\": " + this.packing
+        return ("{ \"ID\": " + this.itineraryId + "\"Itinerary Name\": " + this.name + ", " + "\"Description\": " + this.description + ", " + "\"Packing\": " + this.packing
                 + ", " + "\"Travel\": " + this.travel + ", " + "\"Food\": " + this.food + ", " + " \"Hotel\": "
                 + this.hotel + ", " + "\"Activities\": " + this.activities + " \"Important Notes\": " + this.notes + "}");
     }
 
-    public Itinerary (Long id, String name, String description, String packing, String travel, String food, String hotel, String activities, String notes) {
-        this.id = id;
+    public Itinerary (Long itineraryId, String name, String description, String packing, String travel, String food, String hotel, String activities, String notes) {
+        this.itineraryId = itineraryId;
         this.name = name;
         this.description = description;
         this.packing = packing;
@@ -65,7 +65,7 @@ public class Itinerary {
     
     public static void main(String[] args) {
         Itinerary FirstItinerary = new Itinerary();
-        FirstItinerary.setId(112342412L);
+        FirstItinerary.setItineraryId(112342412L);
         FirstItinerary.setName("My First Itinerary");
         FirstItinerary.setDescription("Trip to Hawaii");
         FirstItinerary.setPacking("Clothes, toiletries, swimgear");
