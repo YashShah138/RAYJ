@@ -65,7 +65,7 @@ public class Itinerary {
     
     public static void main(String[] args) {
         Itinerary FirstItinerary = new Itinerary();
-        FirstItinerary.setItineraryId(112342412L);
+        FirstItinerary.setItineraryId(01L);
         FirstItinerary.setName("My First Itinerary");
         FirstItinerary.setDescription("Trip to Hawaii");
         FirstItinerary.setPacking("Clothes, toiletries, swimgear");
