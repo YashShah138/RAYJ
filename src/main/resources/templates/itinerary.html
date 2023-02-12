@@ -1,6 +1,7 @@
 <html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
-      layout:decorate="~{base}" lang="en">
+      layout:decorate="~{layouts/base}" lang="en">
       
+<head>
 <style>
     .new {
         top:5%;
@@ -21,8 +22,16 @@
         transition: 0.5s;
     }
 </style>
+</head>
 
-<button onclick="window.location.href='/newitinerary';" class="new">Add New</button>
+<body style="background:white">
+    <th:block style="height:100%;" layout:fragment="body" th:remove="tag">
+        <!-- Start of body content specific to page -->
+        <button onclick="window.location.href='/itinerary/new';" class="new">Add New</button>
+        
+        <!-- End of body content specific to page -->
+    </th:block>
+    </body>
 
 
 
