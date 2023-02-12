@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import com.fasterxml.jackson.annotation.JsonTypeInfo.Id;
 import com.nighthawk.spring_portfolio.mvc.itinerary.Itinerary;
 import com.nighthawk.spring_portfolio.mvc.itinerary.ItineraryJpaRepository;
 
@@ -39,8 +41,8 @@ public class ItineraryApiController {
     
     //create
    
-    @GetMapping("/new")
-    public ResponseEntity<List<Itinerary>> createItineraryInfo(Long id, String name, String description, String packing, String travel, String food, String hotel, String activities, String notes) {
+    @GetMapping("/new/{id}")
+    public ResponseEntity<List<Itinerary>> createItinerary(Long id, String name, String description, String packing, String travel, String food, String hotel, String activities, String notes) {
     Itinerary newItinerary = new Itinerary(id, name, description, packing, travel, food, hotel, activities, notes);
     repository.save(newItinerary);
     return new ResponseEntity<>(repository.findAllByOrderByItineraryIdAsc(), HttpStatus.OK);
@@ -64,5 +66,11 @@ public class ItineraryApiController {
     //TODO implement update
 
     //delete
+    @GetMapping("/delete/{id}")
+    public ResponseEntity<List<Itinerary>> deleteItinerary(Long id, String name, String description, String packing, String travel, String food, String hotel, String activities, String notes) {
+    Itinerary selectedItinerary = repository.findById(id).get();
+    repository.delete(selectedItinerary);
+    return new ResponseEntity<>(repository.findAllByOrderByItineraryIdAsc(), HttpStatus.OK);
+    }
 
 }
