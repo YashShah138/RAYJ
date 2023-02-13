@@ -69,10 +69,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			// don't authenticate this particular request
 			.authorizeRequests()
 				.antMatchers("/authenticate").permitAll()
+				.antMatchers("/api/person/**").permitAll()
 				.antMatchers("/").permitAll()
 				.antMatchers("/login").permitAll()
 				.antMatchers("/admin").hasAnyAuthority("ROLE_ADMIN")
-				// .antMatchers("/api/person/**").authenticated()
 				// .antMatchers("/mvc/person/update/**", "/mvc/person/delete/**").authenticated()
 				// .antMatchers("/**").authenticated()
 
