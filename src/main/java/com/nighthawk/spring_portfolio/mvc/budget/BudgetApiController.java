@@ -28,19 +28,16 @@ public class BudgetApiController {
         return new ResponseEntity<>( repository.findAll(), HttpStatus.OK);
     }
 
-    // /*
-    // GET List of itineraries
-    //  */
-    // @GetMapping("/{id}")
-    //public ResponseEntity<Budget> getBudget(@PathVariable int id) {
-    //    Optional<Budget> optional = repository.findAllByOrderByIdAsc();
-    //    if (optional.isPresent()) {  // Good ID
-    //        Budget budget = optional.get();  // value from findByID
-    //        return new ResponseEntity<>(budget, HttpStatus.OK);  // OK HTTP response: status code, headers, and body
-    //    }
+    @GetMapping("/{id}")
+    public ResponseEntity<Budget> getBudget(@PathVariable int id) {
+        Optional<Budget> optional = repository.findById(id);
+        if (optional.isPresent()) {  // Good ID
+            Budget budget = optional.get();  // value from findByID
+            return new ResponseEntity<>(budget, HttpStatus.OK);  // OK HTTP response: status code, headers, and body
+        }
         // Bad ID
-    //    return new ResponseEntity<>(HttpStatus.BAD_REQUEST);       
-    // } 
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);       
+    } 
     
     //create
     @GetMapping("/newbudget")
@@ -51,21 +48,7 @@ public class BudgetApiController {
     }
 
 
-    // @PostMapping(value = "/newItinerary", produces = MediaType.APPLICATION_JSON_VALUE)
-    // public ResponseEntity<Object> newItinerary(@RequestBody final Map<String, Object> map) {
-
-    //     // Create 
-    //     String name = (String) map.get("name");
-    //     String description = (String) map.get("description");
-    //     String packing = (String) map.get("packing");
-    //     String travel = (String) map.get("travel");
-    //     String food = (String) map.get("food");
-    //     String hotel = (String) map.get("hotel");
-    //     String activities = (String) map.get("activities");
-    //     String notes = (String) map.get("notes");
-    //     }
-
-    //TODO implement update
+// add update function
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Budget> deleteBudget(@PathVariable int id) {
