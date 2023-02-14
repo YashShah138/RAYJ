@@ -52,6 +52,7 @@ public class ItineraryApiController {
     public ResponseEntity<Itinerary> getItinerary(@PathVariable Long itineraryId) {
     Itinerary existingItinerary = repository.findById(itineraryId).get();
     return new ResponseEntity<>(existingItinerary, HttpStatus.OK);
+
     }
 
     // @GetMapping("/update/{itineraryId}")
