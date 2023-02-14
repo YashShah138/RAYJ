@@ -40,7 +40,6 @@ public class ItineraryApiController {
     // }
     
     //create
-   
     @GetMapping("/new/{itineraryId}/{name}/{description}/{packing}/{travel}/{food}/{hotel}/{activities}/{notes}")
     public ResponseEntity<List<Itinerary>> createItinerary(@PathVariable Long itineraryId, @PathVariable String name, @PathVariable String description, @PathVariable String packing, @PathVariable String travel, @PathVariable String food, @PathVariable String hotel, @PathVariable String activities, @PathVariable String notes) {
     Itinerary newItinerary = new Itinerary(itineraryId, name, description, packing, travel, food, hotel, activities, notes);
@@ -48,22 +47,20 @@ public class ItineraryApiController {
     return new ResponseEntity<>(repository.findByItineraryId(itineraryId), HttpStatus.OK);
     }
 
+    //update
+    @GetMapping("/get/{itineraryId}")
+    public ResponseEntity<Itinerary> getItinerary(@PathVariable Long itineraryId) {
+    Itinerary existingItinerary = repository.findById(itineraryId).get();
+    return new ResponseEntity<>(existingItinerary, HttpStatus.OK);
+    }
 
-    // @PostMapping(value = "/newItinerary", produces = MediaType.APPLICATION_JSON_VALUE)
-    // public ResponseEntity<Object> newItinerary(@RequestBody final Map<String, Object> map) {
+    // @GetMapping("/update/{itineraryId}")
+    // public ResponseEntity<List<Itinerary>> updateItinerary(@PathVariable Long itineraryId) {
+    // Itinerary selectedItinerary = repository.findById(itineraryId).get();
+    // repository.update(selectedItinerary);
+    // return new ResponseEntity<>(repository.findByItineraryId(itineraryId), HttpStatus.OK);
+    // }
 
-    //     // Create 
-    //     String name = (String) map.get("name");
-    //     String description = (String) map.get("description");
-    //     String packing = (String) map.get("packing");
-    //     String travel = (String) map.get("travel");
-    //     String food = (String) map.get("food");
-    //     String hotel = (String) map.get("hotel");
-    //     String activities = (String) map.get("activities");
-    //     String notes = (String) map.get("notes");
-    //     }
-
-    //TODO implement update
 
     //delete
     @GetMapping("/delete/{itineraryId}")
