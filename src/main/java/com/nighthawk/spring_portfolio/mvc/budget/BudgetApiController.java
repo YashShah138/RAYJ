@@ -28,6 +28,7 @@ public class BudgetApiController {
         return new ResponseEntity<>( repository.findAll(), HttpStatus.OK);
     }
 
+    // read
     @GetMapping("/{id}")
     public ResponseEntity<Budget> getBudget(@PathVariable int id) {
         Optional<Budget> optional = repository.findById(id);
@@ -48,7 +49,17 @@ public class BudgetApiController {
     }
 
 
-// add update function
+    // @GetMapping("/update")
+    // public ResponseEntity<Budget> updateBudget(@PathVariable int id) {
+    //    Optional<Budget> optional = repository.findById(id);
+    //    if (optional.isPresent()) {  // Good ID
+      //      Budget budget = toString(trip, name, airport, rental, transport, hotel1, hotel2);
+        //    repository.save(budget);
+          //  return new ResponseEntity<>(repository.findByTrip(trip), HttpStatus.OK);
+       // }
+        // Bad ID
+      //  return new ResponseEntity<>(HttpStatus.BAD_REQUEST);       
+    //}
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Budget> deleteBudget(@PathVariable int id) {
