@@ -84,7 +84,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-ExposedHeaders", "*", "Authorization"))
 				.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Headers", "Content-Type", "Authorization", "x-csrf-token"))
 				.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-MaxAge", "600"))
-				.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Methods", "POST", "GET", "OPTIONS", "HEAD"))
+				.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Methods", "POST", "GET", "OPTIONS", "HEAD", "DELETE"))
 				// .addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Origin", "*", "http://localhost:8032"))
 			.and()
 				// make sure we use stateless session; session won't be used to
