@@ -1,4 +1,4 @@
-package com.nighthawk.spring_portfolio;
+package com.nighthawk.spring_portfolio.security;
 
 import org.springframework.context.annotation.*;
 import org.springframework.web.servlet.config.annotation.*;
@@ -24,7 +24,7 @@ public class MvcConfig implements WebMvcConfigurer {
     
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**").allowedOrigins("https://nighthawkcoders.github.io", "http://localhost:8032");
+        registry.addMapping("/**").allowedOrigins("https://guapbeast.github.io", "http://localhost:8032");
     }
     
 }
