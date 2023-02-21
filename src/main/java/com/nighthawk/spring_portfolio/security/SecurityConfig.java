@@ -67,18 +67,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			// We don't need CSRF for this example
 			.csrf().disable()
 			// don't authenticate this particular request
-			.authorizeRequests()
-				.antMatchers("/authenticate").permitAll()
-				.antMatchers("/api/person/**").permitAll()
-				.antMatchers("/").permitAll()
-				.antMatchers("/login").permitAll()
-				.antMatchers("/admin").hasAnyAuthority("ROLE_ADMIN")
+			// .authorizeRequests()
+			// 	.antMatchers("/authenticate").permitAll()
+			// 	.antMatchers("/api/person/**").permitAll()
+			// 	.antMatchers("/").permitAll()
+			// 	.antMatchers("/login").permitAll()
+			// 	.antMatchers("/admin").hasAnyAuthority("ROLE_ADMIN")
 				// .antMatchers("/mvc/person/update/**", "/mvc/person/delete/**").authenticated()
 				// .antMatchers("/**").authenticated()
 
 			// all other requests need to be authenticated
-				.anyRequest().authenticated()
-			.and().cors().and()
+				// .anyRequest().authenticated()
+			// .and()
+			.cors().and()
 			.headers()
 				.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Credentials", "true"))
 				.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-ExposedHeaders", "*", "Authorization"))
