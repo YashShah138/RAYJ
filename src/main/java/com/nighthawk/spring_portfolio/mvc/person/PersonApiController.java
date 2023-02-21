@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.web.bind.annotation.*;
 
+import com.nighthawk.spring_portfolio.mvc.role.RoleJpaRepository;
 import com.nighthawk.spring_portfolio.mvc.role.Role;
 
 import java.util.*;
@@ -23,6 +24,9 @@ public class PersonApiController {
     // Autowired enables Control to connect POJO Object through JPA
     @Autowired
     private PersonJpaRepository repository;
+    
+    @Autowired
+    private RoleJpaRepository roleRepository;
 
     /*
     GET List of People
@@ -95,7 +99,8 @@ public class PersonApiController {
         }
         // A person object WITHOUT ID will create a new record with default roles as student
         Person person = new Person(email, password, name, dob, height, weight);
-        person.getRoles().add(new Role(null, "ROLE_USER"));
+        Role role = roleRepository.findByName("ROLE_USER");
+        person.getRoles().add(role);
         repository.save(person);
         return new ResponseEntity<>(email +" is created successfully", HttpStatus.CREATED);
     }
