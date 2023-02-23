@@ -78,6 +78,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.GET, "/api/role/**").hasAnyAuthority("ROLE_ADMIN")
 				.antMatchers(HttpMethod.POST, "/api/role/**").hasAnyAuthority("ROLE_ADMIN")
 				.antMatchers(HttpMethod.DELETE, "/api/role/**").hasAnyAuthority("ROLE_ADMIN")
+				.antMatchers(HttpMethod.DELETE, "/blacklist").hasAnyAuthority("ROLE_ADMIN")
 				.antMatchers(HttpMethod.GET, "/admin").hasAnyAuthority("ROLE_ADMIN") // For testing purposes
 			// all other requests need to be authenticated
 				.anyRequest().authenticated()
