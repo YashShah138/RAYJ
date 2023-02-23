@@ -42,7 +42,7 @@ public class BlacklistedJwtApiController {
 			.path("/")
 			.maxAge(0)
 			.sameSite("None")
-			// .domain("music.nighthawkcoders.tk")
+			.domain("music.nighthawkcoders.tk")
 			.build();
         return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, tokenCookie.toString()).build();
     }
