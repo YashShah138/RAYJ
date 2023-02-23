@@ -48,7 +48,6 @@ public class BlacklistedJwtApiController {
     private void cleanBlacklist() {
         for (BlacklistedJwt jwt : repository.findAll()) {
             String token = jwt.getBlacklistedJwt();
-            System.out.println(token);
             try {
                 jwtTokenUtil.isTokenExpired(token);
             } catch(ExpiredJwtException e) {
