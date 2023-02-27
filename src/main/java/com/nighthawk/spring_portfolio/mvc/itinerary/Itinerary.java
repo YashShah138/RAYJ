@@ -18,7 +18,7 @@ import javax.persistence.*;
 public class Itinerary {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(unique=true, nullable=false)
+    @Column(unique=true, nullable=true)
     private Long itineraryId;
 
     @Column(unique=true, nullable=false)
@@ -45,14 +45,8 @@ public class Itinerary {
     @Column(nullable=false)
     private String notes;
 
-    public String toString() {
-        return ("{ \"ID\": " + this.itineraryId + "\"Itinerary Name\": " + this.name + ", " + "\"Description\": " + this.description + ", " + "\"Packing\": " + this.packing
-                + ", " + "\"Travel\": " + this.travel + ", " + "\"Food\": " + this.food + ", " + " \"Hotel\": "
-                + this.hotel + ", " + "\"Activities\": " + this.activities + " \"Important Notes\": " + this.notes + "}");
-    }
-
-    public Itinerary (Long itineraryId, String name, String description, String packing, String travel, String food, String hotel, String activities, String notes) {
-        this.itineraryId = itineraryId;
+    public Itinerary (String name, String description, String packing, String travel, String food, String hotel, String activities, String notes) {
+        // this.itineraryId = itineraryId;
         this.name = name;
         this.description = description;
         this.packing = packing;
@@ -62,18 +56,37 @@ public class Itinerary {
         this.activities = activities;
         this.notes = notes;
     }
-    
-    public static void main(String[] args) {
-        Itinerary FirstItinerary = new Itinerary();
-        FirstItinerary.setItineraryId(01L);
-        FirstItinerary.setName("My First Itinerary");
-        FirstItinerary.setDescription("Trip to Hawaii");
-        FirstItinerary.setPacking("Clothes, toiletries, swimgear");
-        FirstItinerary.setTravel("Airplane");
-        FirstItinerary.setFood("Local restaurants");
-        FirstItinerary.setHotel("Trivago");
-        FirstItinerary.setActivities("Snorkeling, hiking, cultural festival");
-        FirstItinerary.setNotes("Don't forget allergy medication");
-        System.out.println(FirstItinerary.toString());
-    }
 }
+
+//     public String toString() {
+//         return ("{ \"ID\": " + this.itineraryId + "\"Itinerary Name\": " + this.name + ", " + "\"Description\": " + this.description + ", " + "\"Packing\": " + this.packing
+//                 + ", " + "\"Travel\": " + this.travel + ", " + "\"Food\": " + this.food + ", " + " \"Hotel\": "
+//                 + this.hotel + ", " + "\"Activities\": " + this.activities + " \"Important Notes\": " + this.notes + "}");
+//     }
+
+    // public Itinerary (Long itineraryId, String name, String description, String packing, String travel, String food, String hotel, String activities, String notes) {
+    //     this.itineraryId = itineraryId;
+    //     this.name = name;
+    //     this.description = description;
+    //     this.packing = packing;
+    //     this.travel = travel;
+    //     this.food = food;
+    //     this.hotel = hotel;
+    //     this.activities = activities;
+    //     this.notes = notes;
+    // }
+    
+//     public static void main(String[] args) {
+//         Itinerary FirstItinerary = new Itinerary();
+//         FirstItinerary.setItineraryId(0L);
+//         FirstItinerary.setName("My First Itinerary");
+//         FirstItinerary.setDescription("Trip to Hawaii");
+//         FirstItinerary.setPacking("Clothes, toiletries, swimgear");
+//         FirstItinerary.setTravel("Airplane");
+//         FirstItinerary.setFood("Local restaurants");
+//         FirstItinerary.setHotel("Trivago");
+//         FirstItinerary.setActivities("Snorkeling, hiking, cultural festival");
+//         FirstItinerary.setNotes("Don't forget allergy medication");
+//         System.out.println(FirstItinerary.toString());
+//     }
+// }

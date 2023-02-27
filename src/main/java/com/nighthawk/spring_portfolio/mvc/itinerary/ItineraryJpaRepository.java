@@ -11,4 +11,5 @@ public interface ItineraryJpaRepository extends JpaRepository<Itinerary, Long> {
     // List<Itinerary> findAllByOrderByItineraryIdAsc();
     List<Itinerary> findByItineraryId(Long itineraryId);
     // List<Itinerary> findByItineraryIgnoreCase(String name);
+    // List<Itinerary> findByEmail(String email);
 }
