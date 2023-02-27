@@ -1,22 +1,29 @@
 package com.nighthawk.spring_portfolio.mvc.jwt;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.function.Function;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
+import com.nighthawk.spring_portfolio.mvc.blacklist.*;
+
 @Component
 public class JwtTokenUtil {
 
-	public static final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
+	public static final long JWT_TOKEN_VALIDITY = 60 * 60;
 
 	@Value("${jwt.secret}")
 	private String secret;
+
+	@Autowired
+	private BlacklistedJwtJpaRepository blacklist;
 
 	//retrieve username from jwt token
 	public String getUsernameFromToken(String token) {
@@ -38,7 +45,7 @@ public class JwtTokenUtil {
 	}
 
 	//check if the token has expired
-	private Boolean isTokenExpired(String token) {
+	public Boolean isTokenExpired(String token) {
 		final Date expiration = getExpirationDateFromToken(token);
 		return expiration.before(new Date());
 	}
@@ -61,9 +68,15 @@ public class JwtTokenUtil {
 				.signWith(SignatureAlgorithm.HS512, secret).compact();
 	}
 
+	//check if user has logged out
+	private Boolean isInBlacklist(String token) {
+        Optional<BlacklistedJwt> optional = blacklist.findByBlacklistedJwt((token));
+		return optional.isPresent();
+	}
+	
 	//validate token
 	public Boolean validateToken(String token, UserDetails userDetails) {
 		final String username = getUsernameFromToken(token);
-		return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
+		return (username.equals(userDetails.getUsername()) && !isTokenExpired(token) && !isInBlacklist(token));
 	}
 }

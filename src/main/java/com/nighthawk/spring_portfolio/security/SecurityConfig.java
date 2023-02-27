@@ -68,14 +68,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.csrf().disable()
 			// don't authenticate this particular request
 			.authorizeRequests()
-				.antMatchers("/authenticate").permitAll()
-				.antMatchers("/api/person/**").permitAll()
-				.antMatchers("/").permitAll()
-				.antMatchers("/login").permitAll()
-				.antMatchers("/admin").hasAnyAuthority("ROLE_ADMIN")
-				// .antMatchers("/mvc/person/update/**", "/mvc/person/delete/**").authenticated()
-				// .antMatchers("/**").authenticated()
-
+				.antMatchers(HttpMethod.GET, "/").permitAll()
+				.antMatchers(HttpMethod.GET, "/login").permitAll()
+				.antMatchers(HttpMethod.POST, "/authenticate").permitAll()
+				.antMatchers(HttpMethod.POST, "/api/person/post").permitAll()
+				.antMatchers(HttpMethod.POST, "/api/person/**").hasAnyAuthority("ROLE_ADMIN")
+				.antMatchers(HttpMethod.GET, "/api/person/**").hasAnyAuthority("ROLE_ADMIN")
+				.antMatchers(HttpMethod.DELETE, "/api/person/**").hasAnyAuthority("ROLE_ADMIN")
+				.antMatchers(HttpMethod.GET, "/api/role/**").hasAnyAuthority("ROLE_ADMIN")
+				.antMatchers(HttpMethod.POST, "/api/role/**").hasAnyAuthority("ROLE_ADMIN")
+				.antMatchers(HttpMethod.DELETE, "/api/role/**").hasAnyAuthority("ROLE_ADMIN")
+				.antMatchers(HttpMethod.DELETE, "/blacklist").hasAnyAuthority("ROLE_ADMIN")
+				.antMatchers(HttpMethod.GET, "/admin").hasAnyAuthority("ROLE_ADMIN") // For testing purposes
 			// all other requests need to be authenticated
 				.anyRequest().authenticated()
 			.and().cors().and()
