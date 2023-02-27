@@ -28,13 +28,13 @@ public class ItineraryApiController {
      */
     @GetMapping("/")
     public ResponseEntity<List<Itinerary>> getItinerary() {
-        return new ResponseEntity<>( repository.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>( repository.findAll(), HttpStatus.OK); //search for all
     }
 
     //search
     @GetMapping("/search/{name}")
     public ResponseEntity<List<Itinerary>> searchItinerary(@PathVariable String name) {
-        List<Itinerary> found = repository.findByNameIgnoreCase(name);
+        List<Itinerary> found = repository.findByNameIgnoreCase(name); //search by itinerary name
         return new ResponseEntity<>(found,HttpStatus.OK);
     }
     // /*
@@ -46,11 +46,11 @@ public class ItineraryApiController {
     // }
     
     //create
-    @PostMapping("/new/{name}/{description}/{packing}/{travel}/{food}/{hotel}/{activities}/{notes}")
+    @PostMapping("/new")
     public ResponseEntity<Itinerary> createItinerary(@PathVariable String name, @PathVariable String description, @PathVariable String packing, @PathVariable String travel, @PathVariable String food, @PathVariable String hotel, @PathVariable String activities, @PathVariable String notes) {
     // Itinerary newItinerary = new Itinerary(name, description, packing, travel, food, hotel, activities, notes);
     // repository.save(newItinerary);
-    repository.saveAndFlush(new Itinerary(0L, name, description, packing, travel, food, hotel, activities, notes));
+    repository.saveAndFlush(new Itinerary(0L, name, description, packing, travel, food, hotel, activities, notes)); //save new itinerary object to db
     return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -58,7 +58,7 @@ public class ItineraryApiController {
     @PutMapping("/update/{id}")
     public ResponseEntity<Itinerary> updateItinerary(@PathVariable long id, @RequestBody Itinerary updating) {
     Optional<Itinerary> a = repository.findById(id);
-    if (a.isPresent()) {
+    if (a.isPresent()) { //check if there is currently input
         Itinerary existing = a.get();
         existing.setName(updating.getName());
         existing.setDescription(updating.getDescription());
@@ -96,9 +96,9 @@ public class ItineraryApiController {
         System.out.println("deleting by id");
         return new ResponseEntity<>(existing, HttpStatus.OK); 
     }
-    System.out.println("planner delete checkpoint 6.  Bad request.");
+    System.out.println("id checking done"); //finish id checking
         
-    return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    return new ResponseEntity<>(HttpStatus.BAD_REQUEST); //filter out bad request
     // Itinerary selectedItinerary = repository.findById(id).get();
     // repository.delete(selectedItinerary);
     // return new ResponseEntity<>(repository.findByid(id), HttpStatus.OK);
