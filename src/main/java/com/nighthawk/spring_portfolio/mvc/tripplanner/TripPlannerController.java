@@ -29,10 +29,10 @@ public class TripPlannerController {
         return new ResponseEntity<>(repository.findAll(), HttpStatus.OK);
     }
 
-    @PostMapping("/create/{name}/{packing}/{activities}/{notes}")
+    @PostMapping("/create/{name}/{packing}/{travel}/{food}/{hotel}/{activities}/{notes}")
     public ResponseEntity<TripPlanner> createTripPlanner(@PathVariable String name,
-            @PathVariable String packing, @PathVariable String activities, @PathVariable String notes) {
-        repository.saveAndFlush(new TripPlanner(null, name, packing, activities, notes));
+            @PathVariable String packing, @PathVariable String travel, @PathVariable String food, @PathVariable String hotel, @PathVariable String activities, @PathVariable String notes) {
+        repository.saveAndFlush(new TripPlanner(null, name, packing, travel, food, hotel, activities, notes));
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
@@ -67,6 +67,9 @@ public class TripPlannerController {
             TripPlanner listing = optional.get(); // value from findByID
             listing.setName(newListing.getName()); // value from findByID
             listing.setPacking(newListing.getPacking()); // value from findByID
+            listing.setTravel(newListing.getTravel()); // value from findByID
+            listing.setFood(newListing.getFood()); // value from findByID
+            listing.setHotel(newListing.getHotel()); // value from findByID
             listing.setActivities(newListing.getActivities()); // value from findByID
             listing.setNotes(newListing.getNotes());
             repository.save(listing);

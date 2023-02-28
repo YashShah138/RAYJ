@@ -20,6 +20,9 @@ public class TripPlanner {
     @Column(unique = true)
     private String name;
     private String packing;
+    private String travel;
+    private String food;
+    private String hotel;
     private String activities;
     private String notes;
 }
