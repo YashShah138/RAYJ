@@ -28,9 +28,15 @@ public class ItineraryApiController {
      */
     @GetMapping("/")
     public ResponseEntity<List<Itinerary>> getItinerary() {
-        return new ResponseEntity<>( repository.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>( repository.findAll(), HttpStatus.OK); //search for all
     }
 
+    //search
+    @GetMapping("/search/{name}")
+    public ResponseEntity<List<Itinerary>> searchItinerary(@PathVariable String name) {
+        List<Itinerary> found = repository.findByNameIgnoreCase(name); //search by itinerary name
+        return new ResponseEntity<>(found,HttpStatus.OK);
+    }
     // /*
     // GET List of itineraries
     //  */
@@ -40,19 +46,19 @@ public class ItineraryApiController {
     // }
     
     //create
-    @PostMapping("/new/{name}/{description}/{packing}/{travel}/{food}/{hotel}/{activities}/{notes}")
+    @PostMapping("/new")
     public ResponseEntity<Itinerary> createItinerary(@PathVariable String name, @PathVariable String description, @PathVariable String packing, @PathVariable String travel, @PathVariable String food, @PathVariable String hotel, @PathVariable String activities, @PathVariable String notes) {
-    Itinerary newItinerary = new Itinerary(name, description, packing, travel, food, hotel, activities, notes);
-    repository.save(newItinerary);
-    // repository.saveAndFlush(new Itinerary(name, description, packing, travel, food, hotel, activities, notes));
+    // Itinerary newItinerary = new Itinerary(name, description, packing, travel, food, hotel, activities, notes);
+    // repository.save(newItinerary);
+    repository.saveAndFlush(new Itinerary(0L, name, description, packing, travel, food, hotel, activities, notes)); //save new itinerary object to db
     return new ResponseEntity<>(HttpStatus.OK);
     }
 
     //update
-    @PutMapping("/update/{itineraryId}")
-    public ResponseEntity<Itinerary> updateItinerary(@PathVariable Long itineraryId, @RequestBody Itinerary updating) {
-    Optional<Itinerary> a = repository.findById(itineraryId);
-    if (a.isPresent()) {
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Itinerary> updateItinerary(@PathVariable long id, @RequestBody Itinerary updating) {
+    Optional<Itinerary> a = repository.findById(id);
+    if (a.isPresent()) { //check if there is currently input
         Itinerary existing = a.get();
         existing.setName(updating.getName());
         existing.setDescription(updating.getDescription());
@@ -64,38 +70,38 @@ public class ItineraryApiController {
         existing.setNotes(updating.getNotes());
         return new ResponseEntity<>(existing, HttpStatus.OK);
     }
-    // Itinerary existingItinerary = repository.findById(itineraryId).get();
+    // Itinerary existingItinerary = repository.findById(id).get();
     return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
-    // @GetMapping("/update/{itineraryId}")
-    // public ResponseEntity<List<Itinerary>> updateItinerary(@PathVariable int itineraryId) {
-    // Itinerary selectedItinerary = repository.findById(itineraryId).get();
+    // @GetMapping("/update/{id}")
+    // public ResponseEntity<List<Itinerary>> updateItinerary(@PathVariable int id) {
+    // Itinerary selectedItinerary = repository.findById(id).get();
     // repository.update(selectedItinerary);
-    // return new ResponseEntity<>(repository.findByItineraryId(itineraryId), HttpStatus.OK);
+    // return new ResponseEntity<>(repository.findByid(id), HttpStatus.OK);
     // }
 
 
     //delete
-    @DeleteMapping("/delete/{itineraryId}")
-    public ResponseEntity<Itinerary> deleteItinerary(@PathVariable Long itineraryId) {
-    System.out.println("id is " + itineraryId);
-    Optional<Itinerary> a = repository.findById(itineraryId);
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Itinerary> deleteItinerary(@PathVariable long id) {
+    System.out.println("id is " + id);
+    Optional<Itinerary> a = repository.findById(id);
     System.out.println("finding id");
     if (a.isPresent()) { 
         System.out.println("checking id");
         Itinerary existing = a.get(); 
         System.out.println("getting values from id");
-        repository.deleteById(itineraryId); 
+        repository.deleteById(id); 
         System.out.println("deleting by id");
         return new ResponseEntity<>(existing, HttpStatus.OK); 
     }
-    System.out.println("planner delete checkpoint 6.  Bad request.");
+    System.out.println("id checking done"); //finish id checking
         
-    return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-    // Itinerary selectedItinerary = repository.findById(itineraryId).get();
+    return new ResponseEntity<>(HttpStatus.BAD_REQUEST); //filter out bad request
+    // Itinerary selectedItinerary = repository.findById(id).get();
     // repository.delete(selectedItinerary);
-    // return new ResponseEntity<>(repository.findByItineraryId(itineraryId), HttpStatus.OK);
+    // return new ResponseEntity<>(repository.findByid(id), HttpStatus.OK);
     }
 
 }

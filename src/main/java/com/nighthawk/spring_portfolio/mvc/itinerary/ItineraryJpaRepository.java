@@ -9,7 +9,7 @@ public interface ItineraryJpaRepository extends JpaRepository<Itinerary, Long> {
     // JPA has many built in methods, these few have been prototyped for this application
     void save(String Joke);
     // List<Itinerary> findAllByOrderByItineraryIdAsc();
-    List<Itinerary> findByItineraryId(Long itineraryId);
+    List<Itinerary> findByNameIgnoreCase(String name);
     // List<Itinerary> findByItineraryIgnoreCase(String name);
     // List<Itinerary> findByEmail(String email);
 }

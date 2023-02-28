@@ -18,35 +18,41 @@ import javax.persistence.*;
 public class Itinerary {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(unique=true, nullable=true)
-    private Long itineraryId;
+    private Long id;
 
-    @Column(unique=true, nullable=false)
+    @Column(unique=true)
     private String name;
-    
-    @Column(nullable=false)
     private String description;
-
-    @Column(nullable=false)
     private String packing;
-    
-    @Column(nullable=false)
     private String travel;
-
-    @Column(nullable=false)
     private String food;
-
-    @Column(nullable=false)
     private String hotel;
-
-    @Column(nullable=false)
     private String activities;
-
-    @Column(nullable=false)
     private String notes;
 
-    public Itinerary (String name, String description, String packing, String travel, String food, String hotel, String activities, String notes) {
-        // this.itineraryId = itineraryId;
+    // @Column(nullable=false)
+    // private String description;
+
+    // @Column(nullable=false)
+    // private String packing;
+    
+    // @Column(nullable=false)
+    // private String travel;
+
+    // @Column(nullable=false)
+    // private String food;
+
+    // @Column(nullable=false)
+    // private String hotel;
+
+    // @Column(nullable=false)
+    // private String activities;
+
+    // @Column(nullable=false)
+    // private String notes;
+
+    public Itinerary (Long id, String name, String description, String packing, String travel, String food, String hotel, String activities, String notes) {
+        this.id = id;
         this.name = name;
         this.description = description;
         this.packing = packing;
@@ -59,13 +65,13 @@ public class Itinerary {
 }
 
 //     public String toString() {
-//         return ("{ \"ID\": " + this.itineraryId + "\"Itinerary Name\": " + this.name + ", " + "\"Description\": " + this.description + ", " + "\"Packing\": " + this.packing
+//         return ("{ \"ID\": " + this.id + "\"Itinerary Name\": " + this.name + ", " + "\"Description\": " + this.description + ", " + "\"Packing\": " + this.packing
 //                 + ", " + "\"Travel\": " + this.travel + ", " + "\"Food\": " + this.food + ", " + " \"Hotel\": "
 //                 + this.hotel + ", " + "\"Activities\": " + this.activities + " \"Important Notes\": " + this.notes + "}");
 //     }
 
-    // public Itinerary (Long itineraryId, String name, String description, String packing, String travel, String food, String hotel, String activities, String notes) {
-    //     this.itineraryId = itineraryId;
+    // public Itinerary (Long id, String name, String description, String packing, String travel, String food, String hotel, String activities, String notes) {
+    //     this.id = id;
     //     this.name = name;
     //     this.description = description;
     //     this.packing = packing;
@@ -78,7 +84,7 @@ public class Itinerary {
     
 //     public static void main(String[] args) {
 //         Itinerary FirstItinerary = new Itinerary();
-//         FirstItinerary.setItineraryId(0L);
+//         FirstItinerary.setid(0L);
 //         FirstItinerary.setName("My First Itinerary");
 //         FirstItinerary.setDescription("Trip to Hawaii");
 //         FirstItinerary.setPacking("Clothes, toiletries, swimgear");
