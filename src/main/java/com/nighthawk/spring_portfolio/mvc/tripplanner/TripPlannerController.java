@@ -48,16 +48,16 @@ public class TripPlannerController {
     public ResponseEntity<TripPlanner> updateListing(@PathVariable long id, @RequestBody TripPlanner changes) {
         Optional<TripPlanner> optional = repository.findById(id);
         if (optional.isPresent()) { // Good ID
-            TripPlanner listing = optional.get(); // value from findByID
-            listing.setName(changes.getName()); // value from findByID
-            listing.setPacking(changes.getPacking()); // value from findByID
-            listing.setTravel(changes.getTravel()); // value from findByID
-            listing.setFood(changes.getFood()); // value from findByID
-            listing.setHotel(changes.getHotel()); // value from findByID
-            listing.setActivities(changes.getActivities()); // value from findByID
-            listing.setNotes(changes.getNotes());
-            repository.save(listing);
-            return new ResponseEntity<>(listing, HttpStatus.OK); // OK HTTP response: status code, headers, and body
+            TripPlanner a = optional.get(); // value from findByID
+            a.setName(changes.getName()); // value from findByID
+            a.setPacking(changes.getPacking()); // value from findByID
+            a.setTravel(changes.getTravel()); // value from findByID
+            a.setFood(changes.getFood()); // value from findByID
+            a.setHotel(changes.getHotel()); // value from findByID
+            a.setActivities(changes.getActivities()); // value from findByID
+            a.setNotes(changes.getNotes());
+            repository.save(a);
+            return new ResponseEntity<>(a, HttpStatus.OK); // OK HTTP response: status code, headers, and body
         }
         // Bad ID
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
