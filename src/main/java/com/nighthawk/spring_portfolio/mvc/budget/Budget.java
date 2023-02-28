@@ -16,7 +16,7 @@ import javax.persistence.*;
 // @AllArgsConstructor
 @Entity // Annotation to simplify creating an entity, which is a lightweight persistence domain object. Typically, an entity represents a table in a relational database, and each entity instance corresponds to a row in that table.
 public class Budget {
-    @Id
+    @Id // taking different data types, both text and integer
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(unique=true, nullable=false)
     private Integer trip;
@@ -53,7 +53,7 @@ public class Budget {
         return this.trip;
     }
 
-    public String toString() {
+    public String toString() { // returning the data as a string
         return ("{ \"Trip\": " + this.trip + "\"Trip Name\": " + this.name + ", " + "\"Airport\": " + this.airport + ", " + "\"Rental Car\": " + this.rental
                 + ", " + "\"Other Transport\": " + this.transport + ", " + "\"1st Hotel\": " + this.hotel1 + ", " + " \"2nd Hotel\": "
                 + this.hotel2 + "\"3rd Hotel\": " + "}");
