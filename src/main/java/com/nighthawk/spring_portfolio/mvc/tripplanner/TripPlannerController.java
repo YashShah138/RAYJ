@@ -39,7 +39,7 @@ public class TripPlannerController {
     @PostMapping("/create/{name}/{packing}/{travel}/{food}/{hotel}/{activities}/{notes}")
     public ResponseEntity<TripPlanner> createTripPlanner(@PathVariable String name,
             @PathVariable String packing, @PathVariable String travel, @PathVariable String food, @PathVariable String hotel, @PathVariable String activities, @PathVariable String notes) {
-        repository.saveAndFlush(new TripPlanner(null, name, packing, travel, food, hotel, activities, notes));
+        repository.save(new TripPlanner(null, name, packing, travel, food, hotel, activities, notes));
         return new ResponseEntity<>(HttpStatus.OK);
     }
     
