@@ -78,7 +78,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.GET, "/api/role/**").hasAnyAuthority("ROLE_ADMIN")
 				.antMatchers(HttpMethod.POST, "/api/role/**").hasAnyAuthority("ROLE_ADMIN")
 				.antMatchers(HttpMethod.DELETE, "/api/role/**").hasAnyAuthority("ROLE_ADMIN")
-				.antMatchers(HttpMethod.DELETE, "/blacklist").hasAnyAuthority("ROLE_ADMIN")
+				.antMatchers(HttpMethod.GET, "/blacklist").hasAnyAuthority("ROLE_ADMIN")
 				.antMatchers(HttpMethod.GET, "/admin").hasAnyAuthority("ROLE_ADMIN") // For testing purposes
 			// all other requests need to be authenticated
 				.anyRequest().authenticated()
@@ -88,7 +88,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-ExposedHeaders", "*", "Authorization"))
 				.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Headers", "Content-Type", "Authorization", "x-csrf-token"))
 				.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-MaxAge", "600"))
-				.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Methods", "POST", "GET", "OPTIONS", "HEAD"))
+				.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Methods", "POST", "GET", "OPTIONS", "HEAD", "DELETE"))
 				// .addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Origin", "*", "http://localhost:8032"))
 			.and()
 				// make sure we use stateless session; session won't be used to
